@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Vistas;
 
 import Archivo.Configuraciones;
@@ -163,17 +159,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void lblCrearUsurioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrearUsurioMouseClicked
        
         
-//        
-//        int clickCount = evt.getClickCount();
-//        lblCrearUsurio.setForeground(Color.BLACK);
-//         if (clickCount == 2) {
-//            lblCrearUsurio.setForeground(Color.YELLOW);
-//            FrmCrearUsuarios vistaCrearUsua= new FrmCrearUsuarios();
-//            escritorio.add(vistaCrearUsua);
-//            vistaCrearUsua.show();
-//            
-//            
-//         }   
+        
+        int clickCount = evt.getClickCount();
+        lblCrearUsurio.setForeground(Color.BLACK);
+         if (clickCount == 2) {
+            lblCrearUsurio.setForeground(Color.YELLOW);
+            FrmCrearUsuarios vistaCrearUsua= new FrmCrearUsuarios();
+            escritorio.add(vistaCrearUsua);
+            vistaCrearUsua.show();
+            
+            
+         }   
     }//GEN-LAST:event_lblCrearUsurioMouseClicked
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
