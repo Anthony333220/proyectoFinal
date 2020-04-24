@@ -43,9 +43,8 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="cajaTelefono" max="32767" attributes="0"/>
+                                  <Component id="cajaTelefono" pref="135" max="32767" attributes="0"/>
                                   <Component id="cajaCorreo" max="32767" attributes="0"/>
-                                  <Component id="txtDate" pref="135" max="32767" attributes="0"/>
                                   <Component id="cajaCedula" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -82,10 +81,7 @@
                   <Component id="jLabel2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtDate" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jLabel7" min="-2" pref="24" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cajaTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -136,8 +132,6 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblCalcularMouseClicked"/>
       </Events>
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="txtDate">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>

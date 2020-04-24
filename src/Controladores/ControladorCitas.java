@@ -17,7 +17,6 @@ public class ControladorCitas {
 
     private Statement sentencias;
     private ResultSet datos;
-
     private ControladorSecretaria ctls = new ControladorSecretaria();
     private Secretaria secretaria;
     private Statement sentencias2;

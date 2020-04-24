@@ -7,7 +7,7 @@ import java.util.Date;
  * @author Anthony
  */
 public class Tecnico {
-   
+
     private int cedula;
     private String nombre;
 
@@ -24,12 +24,17 @@ public class Tecnico {
         this.correoElectronico = correoElectronico;
         this.salario = salario;
     }
-     public Tecnico(){
+    
+    public Tecnico(int cedula) {
+        this.cedula = cedula;
+    }
+
+    public Tecnico() {
         this.cedula = 0;
         this.nombre = null;
         this.fechaNacimiento = null;
         this.telefono = 0;
-        this.correoElectronico= null;
+        this.correoElectronico = null;
         this.salario = 0;
     }
 
@@ -57,7 +62,7 @@ public class Tecnico {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public int  getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
@@ -80,11 +85,5 @@ public class Tecnico {
     public void setSalario(double salario) {
         this.salario = salario;
     }
-    
-    
-    
 
-    
-    
-    
 }

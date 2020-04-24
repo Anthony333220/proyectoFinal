@@ -27,6 +27,10 @@ public class Revision{
         this.estado = estado;
     }
     
+    public Revision(Date fecha) {
+        this.fecha = fecha;
+    }
+    
     public Revision(Vehiculo vehiculo, Date fecha, Time hora, Tecnico tecnico, String observacione, boolean estado) {
         this.vehiculo = vehiculo;
         this.fecha = fecha;

@@ -33,7 +33,6 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         cajaId = new javax.swing.JTextField();
         lblFecha = new javax.swing.JLabel();
-        txtFechaCita = new com.toedter.calendar.JDateChooser();
         comboxtHoraCita = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -44,9 +43,7 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         cajaPlaca = new javax.swing.JTextField();
         cajaMarca = new javax.swing.JTextField();
-        txtAño = new com.toedter.calendar.JDateChooser();
         cajaModelo = new javax.swing.JTextField();
-        txtFechaIns = new com.toedter.calendar.JDateChooser();
         cajaPropi = new javax.swing.JTextField();
         cajaNombre = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -78,8 +75,6 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
         cajaId.setBounds(60, 0, 117, 30);
         getContentPane().add(lblFecha);
         lblFecha.setBounds(286, 39, 133, 26);
-        getContentPane().add(txtFechaCita);
-        txtFechaCita.setBounds(60, 40, 120, 25);
 
         comboxtHoraCita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8 am", "9 am", "10am", "11am ", "12am", "13pm", "14pm", "15pm", "16pm", "17pm" }));
         getContentPane().add(comboxtHoraCita);
@@ -116,12 +111,8 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
         cajaPlaca.setBounds(60, 210, 170, 30);
         getContentPane().add(cajaMarca);
         cajaMarca.setBounds(60, 250, 170, 30);
-        getContentPane().add(txtAño);
-        txtAño.setBounds(60, 350, 170, 30);
         getContentPane().add(cajaModelo);
         cajaModelo.setBounds(60, 300, 170, 30);
-        getContentPane().add(txtFechaIns);
-        txtFechaIns.setBounds(430, 210, 140, 30);
         getContentPane().add(cajaPropi);
         cajaPropi.setBounds(430, 260, 140, 30);
         getContentPane().add(cajaNombre);
@@ -134,7 +125,7 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
 
         btnAgregar.setText("AGREGAR");
         getContentPane().add(btnAgregar);
-        btnAgregar.setBounds(393, 360, 160, 23);
+        btnAgregar.setBounds(393, 360, 160, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -162,8 +153,5 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblFecha;
-    private com.toedter.calendar.JDateChooser txtAño;
-    private com.toedter.calendar.JDateChooser txtFechaCita;
-    private com.toedter.calendar.JDateChooser txtFechaIns;
     // End of variables declaration//GEN-END:variables
 }
