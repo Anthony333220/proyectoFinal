@@ -1,7 +1,10 @@
 package Controladores;
 
+
 import Archivo.Configuraciones;
+import Archivo.PruebaConexion;
 import Clases.Usuario;
+import Vistas.FrmCrearUsuarios;
 import Vistas.FrmPrincipal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,37 +14,49 @@ import java.util.ArrayList;
 
 public class ControladorUsuarios {
 
-    Archivo.Configuraciones conexion;
+    private PruebaConexion conn;
     private Statement sentencias;
     private ResultSet datos;
-
+     private Usuario usuario;
+   
+   
+   
+   
+   
     public ControladorUsuarios() {
-        conexion = FrmPrincipal.getConexion();
-        this.sentencias = conexion.getSentencias();
-        this.datos = conexion.getDatos();
+       conn  = FrmPrincipal.getConexion();
+        
+        this.sentencias = conn.getSentencias();
+        this.datos = conn.getDatos();
 
     }
 
-    public ControladorUsuarios(Configuraciones conexion) {
+    public ControladorUsuarios(PruebaConexion conn) {
 
-        conexion = conexion;
-        this.sentencias = conexion.getSentencias();
-        this.datos = conexion.getDatos();
+        this.conn = conn;
+        this.sentencias = conn.getSentencias();
+        this.datos = conn.getDatos();
 
     }
+  
+    
+    
+    
 
-    public boolean añadir(Usuario usuario) {
+    public boolean agregarUsuario(Usuario usuario) {
         try {
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-            sentencias.execute("insert into usuarios values(null,'" + usuario.getCedula() + "','" + usuario.getNombre() + "','" + f.format(usuario.getFechaNacimiento()) + "','" + usuario.getTelefono() + "','" + usuario.getCorreoElectronico() + "','" + usuario.getNombreUsuario() + "','" + usuario.getContrasena() + "','" + usuario.getTipoUsuario() + "')");
+            //System.out.println("si entra a ejecuchacion");
+            this.sentencias.execute("insert into usuarios values(null,'"+usuario.getCedula()+"','"+usuario.getNombre()+"','" +usuario.getTelefono()+ "','"+usuario.getCorreoElectronico()+"','"+f.format(usuario.getFechaNacimiento())+"','"+usuario.getNombreUsuario()+"','"+usuario.getContrasena()+"','"+usuario.getTipoUsuario()+"')");
+            System.out.println("metodo si agrega  en ctl");
             return true;
         } catch (SQLException ex) {
-            System.out.println("Error al agregar usuario" + ex.getMessage());
+            System.out.println("no se agredo usuario devido a" + ex.getMessage());
         }
         return false;
     }
 
-    public Usuario buscar(Usuario usuario) {
+    public Usuario buscarUsuario(Usuario usuario) {
         try {
 
             this.datos = this.sentencias.executeQuery("select * from usuarios where cedula=" + usuario.getCedula());
@@ -62,7 +77,7 @@ public class ControladorUsuarios {
             }
 
         } catch (SQLException ex) {
-            System.out.println("Error al buscar" + ex);
+            System.out.println("no se pudo hayar  un usuario" + ex);
         }
         return null;
 
@@ -89,7 +104,7 @@ public class ControladorUsuarios {
             this.sentencias.executeUpdate("UPDATE usuarios SET nombre='" + usuario.getNombre() + "',fechaNacimiento='" + f.format(usuario.getFechaNacimiento()) + "', telefono='" + usuario.getTelefono() + "', correoElectronico='" + usuario.getCorreoElectronico() + "', NombreUsuario='" + usuario.getNombreUsuario() + "', Contraseña='" + usuario.getContrasena() + "',tipoUsuario='" + usuario.getTipoUsuario() + "' WHERE cedula ='" + usuario.getCedula() + "';");
             return true;
 
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             System.out.println("Error al actualizar");
             System.out.println(ex);
         }

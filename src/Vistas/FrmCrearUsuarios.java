@@ -15,11 +15,15 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
     private Usuario usuario;
     private ControladorUsuarios cu;
 
+  //private static Configuraciones conexion=new Configuraciones();
+  
+  
     public FrmCrearUsuarios() {
         cu = new ControladorUsuarios();
         initComponents();
 
     }
+       
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,13 +45,11 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         cajaUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         cajaContra = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         combox = new javax.swing.JComboBox<>();
         txtDate = new com.toedter.calendar.JDateChooser();
@@ -56,6 +58,7 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Agregar usuarios o modificar");
 
         cajaCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,14 +84,12 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Tipo");
 
-        btnGuardar.setText("Guardar");
+        btnGuardar.setText("Agregar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-
-        btnBuscar.setText("Buscar");
 
         cajaUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,8 +108,11 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
         jLabel6.setText("Contraseña");
 
         btnModificar.setText("Modificar");
-
-        btnEliminar.setText("Eliminar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -153,36 +157,38 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
                             .addComponent(cajaContra)
                             .addComponent(combox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 205, Short.MAX_VALUE)
                             .addComponent(cajaNombre)
-                            .addComponent(txtDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(txtDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(btnLimpiar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnBuscar)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnLimpiar)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnEliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificar)
-                        .addGap(18, 18, 18)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGuardar)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cajaCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cajaCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addGap(11, 11, 11)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                         .addGap(17, 17, 17)
                         .addComponent(Corre, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                        .addComponent(cajaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap(30, Short.MAX_VALUE)
+                                .addComponent(cajaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnLimpiar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(cajaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +197,7 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,11 +215,8 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
                     .addComponent(combox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscar)
-                    .addComponent(btnLimpiar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnModificar)
-                    .addComponent(btnGuardar))
+                    .addComponent(btnGuardar)
+                    .addComponent(btnModificar))
                 .addContainerGap())
         );
 
@@ -227,41 +230,37 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cajaTelefonoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        usuario = new Usuario();
-        try {
 
-            usuario.setCedula(Integer.parseInt(this.cajaCedula.getText()));
-            usuario.setTelefono(Integer.parseInt(this.cajaTelefono.getText()));
-        } catch (NumberFormatException e) {
-         JOptionPane.showMessageDialog(null, "Error de lectura "+e.getMessage());
+        usuario = new Usuario();
+        try{
+        usuario.setCedula(Integer.parseInt(this.cajaCedula.getText()));
+        usuario.setTelefono(Integer.parseInt(this.cajaTelefono.getText()));
+        System.out.println("si lee el try");
+        } catch(NumberFormatException e){
+            System.out.println("error"+e.getMessage());
+            
+            
         }
+
         usuario.setNombre(this.cajaNombre.getText());
         usuario.setContrasena(this.cajaContra.getText());
         usuario.setCorreoElectronico(this.cajaEmail.getText());
         usuario.setNombreUsuario(this.cajaUsuario.getText());
         usuario.setTipoUsuario((String) this.combox.getSelectedItem());
         usuario.setFechaNacimiento(this.txtDate.getDate());
-        //JOptionPane.showMessageDialog(null, "SE AGREGO UN USUARIO");
 
-        if (usuario.comprobar()) {
+        System.out.println("antes de añadir");
+        if (cu.agregarUsuario(usuario)) {
 
-            if (cu.añadir(usuario)) {
-                JOptionPane.showMessageDialog(this, "Usuario agregado");
-                usuario = null;
-                Limpiar();
-            } else {
-                System.out.println("No se pudo agregar ");
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos");
+            JOptionPane.showMessageDialog(this, "Usuario agregado");
+            usuario=null;
         }
 
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void cajaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaUsuarioActionPerformed
-      
+
     }//GEN-LAST:event_cajaUsuarioActionPerformed
 
     private void cajaCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaCedulaActionPerformed
@@ -276,6 +275,39 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         Limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+         usuario = new Usuario();
+        try{
+        usuario.setCedula(Integer.parseInt(this.cajaCedula.getText()));
+        usuario.setTelefono(Integer.parseInt(this.cajaTelefono.getText()));
+        System.out.println("si lee el try");
+        } catch(NumberFormatException e){
+            System.out.println("error"+e.getMessage());
+            
+            
+        }
+
+        usuario.setNombre(this.cajaNombre.getText());
+        usuario.setContrasena(this.cajaContra.getText());
+        usuario.setCorreoElectronico(this.cajaEmail.getText());
+        usuario.setNombreUsuario(this.cajaUsuario.getText());
+        usuario.setTipoUsuario((String) this.combox.getSelectedItem());
+        usuario.setFechaNacimiento(this.txtDate.getDate());
+
+        System.out.println("antes de añadir");
+        if (cu.actualizar(usuario)) {
+
+            JOptionPane.showMessageDialog(this, "Usuario Modificado");
+            usuario=null;
+        }
+
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     public String concatenar(char pass[]) {
         String pass2 = "";
@@ -304,46 +336,11 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
 
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmPrincipal().setVisible(true);
-            }
-        });
-    }
+  
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Corre;
-    public javax.swing.JButton btnBuscar;
-    public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnGuardar;
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnModificar;

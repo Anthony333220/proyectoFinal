@@ -19,11 +19,11 @@ public class Configuraciones {
 
     private Connection conexion;
 
-    private  Statement sentencias;
-    private   ResultSet datos;
+    private Statement sentencias;
+    private ResultSet datos;
 
     public Connection getConectar() {
-
+        conexion = null;
         try {
             InputStream isArchi = new FileInputStream("C:\\Users\\user\\Documents\\NetBeansProjects\\sistemaRiteve\\src\\Archivo\\base.properties");
             Properties propiedad = new Properties();
@@ -32,10 +32,15 @@ public class Configuraciones {
             isArchi.close();
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Conectando.....");
+
             // this.sentencias=conexion.createStatement();
             conexion = DriverManager.getConnection(url, usuario, contra);
             System.out.println("Conexion establecida");
-            JOptionPane.showMessageDialog(null, "Conexion establecida properties");
+            this.sentencias = this.conexion.createStatement();
+            if (conexion != null) {
+              JOptionPane.showMessageDialog(null, "Conexion establecida properties"); 
+            }
+            System.out.println("error de connection)");
 
         } catch (Exception e) {
             System.out.println("error de connection devido a" + e.getMessage());
@@ -44,8 +49,6 @@ public class Configuraciones {
         return conexion;
 
     }
-    
-    
 
 //
 //public Connection conectar2(String url, String usuario, String contra) {
@@ -79,7 +82,6 @@ public class Configuraciones {
 //    public Connection getConexion() {
 //        return conexion;
 //    }
-
     public void setConexion(Connection conexion) {
         this.conexion = conexion;
     }

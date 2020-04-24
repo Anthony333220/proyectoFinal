@@ -6,23 +6,31 @@ import java.util.Date;
  *
  * @author Anthony
  */
-public class Tecnico extends Usuario{
+public class Tecnico {
    
     private int cedula;
     private String nombre;
 
     private Date fechaNacimiento;
     private int telefono;
-    private String correoElectrónico;
+    private String correoElectronico;
     private double salario;
 
-    public Tecnico(int cedula, String nombre, Date fechaNacimiento, int telefono, String correoElectrónico, double salario) {
+    public Tecnico(int cedula, String nombre, Date fechaNacimiento, int telefono, String correoElectronico, double salario) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
-        this.correoElectrónico = correoElectrónico;
+        this.correoElectronico = correoElectronico;
         this.salario = salario;
+    }
+     public Tecnico(){
+        this.cedula = 0;
+        this.nombre = null;
+        this.fechaNacimiento = null;
+        this.telefono = 0;
+        this.correoElectronico= null;
+        this.salario = 0;
     }
 
     public int getCedula() {
@@ -49,7 +57,7 @@ public class Tecnico extends Usuario{
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public int getTelefono() {
+    public int  getTelefono() {
         return telefono;
     }
 
@@ -58,11 +66,11 @@ public class Tecnico extends Usuario{
     }
 
     public String getCorreoElectrónico() {
-        return correoElectrónico;
+        return correoElectronico;
     }
 
     public void setCorreoElectrónico(String correoElectrónico) {
-        this.correoElectrónico = correoElectrónico;
+        this.correoElectronico = correoElectrónico;
     }
 
     public double getSalario() {

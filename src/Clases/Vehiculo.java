@@ -1,5 +1,6 @@
 package Clases;
 
+import java.sql.Date;
 import java.time.Year;
 
 /**
@@ -8,15 +9,15 @@ import java.time.Year;
  */
 public class Vehiculo {
     
-    private String placa;
+    private int placa;
     private String marca;
     private String modelo;
-    private Year anio;
-    private String fechaInscripcion;
+    private String anio;
+    private Date fechaInscripcion;
     private String cedula;
     private String nombrePropietario;
 
-    public Vehiculo(String placa, String marca, String modelo, Year anio, String fechaInscripcion, String cedula, String nombrePropietario) {
+    public Vehiculo(int placa, String marca, String modelo, String anio, Date fechaInscripcion, String cedula, String nombrePropietario) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
@@ -26,15 +27,15 @@ public class Vehiculo {
         this.nombrePropietario = nombrePropietario;
     }
 
-    public Vehiculo(String placa) {
+    public Vehiculo(int placa) {
         this.placa = placa;
     }
 
-    public String getPlaca() {
+    public int getPlaca() {
         return placa;
     }
 
-    public void setPlaca(String placa) {
+    public void setPlaca(int placa) {
         this.placa = placa;
     }
 
@@ -54,19 +55,19 @@ public class Vehiculo {
         this.modelo = modelo;
     }
 
-    public Year getAnio() {
+    public String getAnio() {
         return anio;
     }
 
-    public void setAnio(Year anio) {
+    public void setAnio(String anio) {
         this.anio = anio;
     }
 
-    public String getFechaInscripcion() {
+    public Date getFechaInscripcion() {
         return fechaInscripcion;
     }
 
-    public void setFechaInscripcion(String fechaInscripcion) {
+    public void setFechaInscripcion(Date fechaInscripcion) {
         this.fechaInscripcion = fechaInscripcion;
     }
 

@@ -1,8 +1,13 @@
-
 package Vistas;
 
 import Archivo.Configuraciones;
+import Archivo.PruebaConexion;
+import Clases.Usuario;
+import Controladores.ControladorUsuarios;
 import java.awt.Color;
+import java.awt.Frame;
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,26 +15,47 @@ import java.awt.Color;
  */
 public class FrmPrincipal extends javax.swing.JFrame {
 
-  //Configuraciones confi;
-  
-  private static Configuraciones conexion=new Configuraciones();
+    //Configuraciones confi;
+    private Usuario usuario;
+    private FrmCrearUsuarios frmAgregar;
+    private ControladorUsuarios ctu;
+    private String ContraseñaActual;
+
+    private static PruebaConexion conexion = new PruebaConexion();
+
     public FrmPrincipal() {
-        
-        
+
+        ctu = new ControladorUsuarios();
         initComponents();
-     
-        conexion.getConectar();
-        
-        
-        
-        
-         //setLocationRelativeTo(null);
+        //usuario=new Usuario();
+        ctu = new ControladorUsuarios();
+
+        this.conexion.getConectar();
+
+        //setLocationRelativeTo(null);
         //setExtendedState(FrmPrincipal.MAXIMIZED_BOTH);
-       
     }
-    
-    public static Configuraciones getConexion(){
-       return conexion;
+
+    public void limpiarCaja() {
+
+        cajaContra.setText("");
+    }
+
+    public static PruebaConexion getConexion() {
+        return conexion;
+    }
+
+    public void VerificarConexion() {
+        //si en la ventana de configurar no se logra conectar se cierra toda la aplicacion
+        if (conexion.getConexion() == null) {
+            JOptionPane.showMessageDialog(null, "conexion nula en frame");
+            conexion.getConectar();
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Toda la conexion esta bien en frame");
+        }
+
     }
 
     /**
@@ -42,13 +68,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         escritorio = new javax.swing.JDesktopPane();
+        cajaContra = new javax.swing.JTextField();
         cajaUsuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cajaContraseña = new javax.swing.JPasswordField();
         btnIngresar = new javax.swing.JButton();
         lblCrearUsurio = new javax.swing.JLabel();
         lblConfiguracion = new javax.swing.JLabel();
+        lblAdministrarTecnicos = new javax.swing.JLabel();
+        lblEliminarUsuarios = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,13 +105,29 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        lblAdministrarTecnicos.setText("Administrar Tecnicos");
+        lblAdministrarTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAdministrarTecnicosMouseClicked(evt);
+            }
+        });
+
+        lblEliminarUsuarios.setText("Eliminar un Usuario");
+        lblEliminarUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEliminarUsuariosMouseClicked(evt);
+            }
+        });
+
+        escritorio.setLayer(cajaContra, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(cajaUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        escritorio.setLayer(cajaContraseña, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(btnIngresar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(lblCrearUsurio, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(lblConfiguracion, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(lblAdministrarTecnicos, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(lblEliminarUsuarios, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -92,39 +136,50 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(escritorioLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblEliminarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(escritorioLayout.createSequentialGroup()
-                        .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cajaUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                            .addComponent(cajaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                        .addGap(30, 30, 30)
-                        .addComponent(btnIngresar))
-                    .addGroup(escritorioLayout.createSequentialGroup()
-                        .addComponent(lblCrearUsurio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(246, Short.MAX_VALUE))
+                        .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(escritorioLayout.createSequentialGroup()
+                                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(escritorioLayout.createSequentialGroup()
+                                        .addComponent(cajaContra, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 79, Short.MAX_VALUE))
+                                    .addGroup(escritorioLayout.createSequentialGroup()
+                                        .addComponent(cajaUsuario)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnIngresar))))
+                            .addGroup(escritorioLayout.createSequentialGroup()
+                                .addComponent(lblCrearUsurio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblAdministrarTecnicos, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(103, 103, 103))
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cajaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
+                    .addComponent(cajaUsuario)
                     .addComponent(btnIngresar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                    .addComponent(cajaContra))
+                .addGap(30, 30, 30)
                 .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCrearUsurio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(324, Short.MAX_VALUE))
+                    .addComponent(lblConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAdministrarTecnicos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblEliminarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(293, 293, 293))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -132,7 +187,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 12, Short.MAX_VALUE)
                 .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -144,11 +199,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConfiguracionMouseClicked
-        
-       
+
         int clickCount = evt.getClickCount();
         lblConfiguracion.setForeground(Color.BLACK);
-         if (clickCount == 2) {
+        if (clickCount == 2) {
             lblConfiguracion.setForeground(Color.YELLOW);
             FrmConfiguracionConexion vistaConfi = new FrmConfiguracionConexion();
             escritorio.add(vistaConfi);
@@ -157,25 +211,69 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblConfiguracionMouseClicked
 
     private void lblCrearUsurioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrearUsurioMouseClicked
-       
-        
-        
+
         int clickCount = evt.getClickCount();
         lblCrearUsurio.setForeground(Color.BLACK);
-         if (clickCount == 2) {
+        if (clickCount == 2) {
             lblCrearUsurio.setForeground(Color.YELLOW);
-            FrmCrearUsuarios vistaCrearUsua= new FrmCrearUsuarios();
+            FrmCrearUsuarios vistaCrearUsua = new FrmCrearUsuarios();
             escritorio.add(vistaCrearUsua);
             vistaCrearUsua.show();
-            
-            
-         }   
+
+        }
     }//GEN-LAST:event_lblCrearUsurioMouseClicked
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-    
-  
+
+        if (cajaContra.getText().isEmpty() || cajaUsuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese los datos necesarios");
+
+        } else {
+            usuario = new Usuario();
+            try {
+
+                usuario.setCedula(Integer.parseInt(this.cajaContra.getText()));
+                //usuario.setNombreUsuario(this.cajaUsuario.getText());
+
+                if (ctu.buscarUsuario(usuario).equals("")) {
+
+                    JOptionPane.showMessageDialog(this, "Usuario encontrado");
+                    usuario = null;
+                    limpiarCaja();
+
+                }
+
+            } catch (HeadlessException e) {
+                JOptionPane.showMessageDialog(this, "Error a la ingresar por favor verifique su contraseña y usuario");
+
+            }
+
+        }
+
+
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void lblAdministrarTecnicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAdministrarTecnicosMouseClicked
+        int clickCount = evt.getClickCount();
+        lblAdministrarTecnicos.setForeground(Color.BLACK);
+        if (clickCount == 2) {
+            lblAdministrarTecnicos.setForeground(Color.YELLOW);
+            FrmAdministarTecnico frmT = new FrmAdministarTecnico();
+            escritorio.add(frmT);
+            frmT.show();
+        }
+    }//GEN-LAST:event_lblAdministrarTecnicosMouseClicked
+
+    private void lblEliminarUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminarUsuariosMouseClicked
+        int clickCount = evt.getClickCount();
+        lblEliminarUsuarios.setForeground(Color.BLACK);
+        if (clickCount == 2) {
+            lblEliminarUsuarios.setForeground(Color.YELLOW);
+            FrmEliminarUsuario frmeli = new FrmEliminarUsuario();
+            escritorio.add(frmeli);
+            frmeli.show();
+        }
+    }//GEN-LAST:event_lblEliminarUsuariosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -214,12 +312,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
-    private javax.swing.JPasswordField cajaContraseña;
+    private javax.swing.JTextField cajaContra;
     private javax.swing.JTextField cajaUsuario;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblAdministrarTecnicos;
     private javax.swing.JLabel lblConfiguracion;
     private javax.swing.JLabel lblCrearUsurio;
+    private javax.swing.JLabel lblEliminarUsuarios;
     // End of variables declaration//GEN-END:variables
 }
