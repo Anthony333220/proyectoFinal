@@ -8,16 +8,16 @@ import java.time.Year;
  * @author Anthony
  */
 public class Vehiculo {
-    
+
     private int placa;
     private String marca;
     private String modelo;
     private String anio;
     private Date fechaInscripcion;
-    private String cedula;
+    private int cedula;
     private String nombrePropietario;
 
-    public Vehiculo(int placa, String marca, String modelo, String anio, Date fechaInscripcion, String cedula, String nombrePropietario) {
+    public Vehiculo(int placa, String marca, String modelo, String anio, Date fechaInscripcion, int cedula, String nombrePropietario) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
@@ -25,6 +25,18 @@ public class Vehiculo {
         this.fechaInscripcion = fechaInscripcion;
         this.cedula = cedula;
         this.nombrePropietario = nombrePropietario;
+    }
+
+    public Vehiculo() {
+
+        this.placa = 0;
+        this.marca =null;
+        this.modelo = null;
+        this.anio = null;
+        this.fechaInscripcion = null;
+        this.cedula = 0;
+        this.nombrePropietario =null;
+
     }
 
     public Vehiculo(int placa) {
@@ -71,11 +83,11 @@ public class Vehiculo {
         this.fechaInscripcion = fechaInscripcion;
     }
 
-    public String getCedula() {
+    public int getCedula() {
         return cedula;
     }
 
-    public void setCedula(String cedula) {
+    public void setCedula(int  cedula) {
         this.cedula = cedula;
     }
 
@@ -87,8 +99,5 @@ public class Vehiculo {
         this.nombrePropietario = nombrePropietario;
     }
 
-    @Override
-    public String toString() {
-        return "Vehiculo{" + "placa=" + placa + ", marca=" + marca + ", modelo=" + modelo + ", año=" + anio + ", fechaInscripcion=" + fechaInscripcion + ", cedula=" + cedula + ", nombrePropietario=" + nombrePropietario + '}';
-    }    
+    
 }

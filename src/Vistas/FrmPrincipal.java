@@ -7,6 +7,9 @@ import Controladores.ControladorUsuarios;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.HeadlessException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,15 +23,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private FrmCrearUsuarios frmAgregar;
     private ControladorUsuarios ctu;
     private String ContraseñaActual;
+    
+    
+  
 
     private static PruebaConexion conexion = new PruebaConexion();
 
     public FrmPrincipal() {
+        //setExtendedState(FrmPrincipal.MAXIMIZED_BOTH);
+
 
         ctu = new ControladorUsuarios();
         initComponents();
-        //usuario=new Usuario();
-        ctu = new ControladorUsuarios();
+        //  setExtendedState(this.MAXIMIZED_BOTH);
+       usuario=new Usuario();
+       ctu = new ControladorUsuarios();
 
         this.conexion.getConectar();
 
@@ -37,8 +46,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     public void limpiarCaja() {
-
-        cajaContra.setText("");
+cajaUsuario.setText("");
+      
     }
 
     public static PruebaConexion getConexion() {
@@ -68,21 +77,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         escritorio = new javax.swing.JDesktopPane();
-        cajaContra = new javax.swing.JTextField();
         cajaUsuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
         lblCrearUsurio = new javax.swing.JLabel();
         lblConfiguracion = new javax.swing.JLabel();
         lblAdministrarTecnicos = new javax.swing.JLabel();
         lblEliminarUsuarios = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Usuario");
-
-        jLabel2.setText("Password");
+        jLabel1.setText("Cedula Usuario");
 
         btnIngresar.setText("Ingresar");
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +97,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        lblCrearUsurio.setText("Crear Usuario");
+        lblCrearUsurio.setText("Crear  o modificar Usuario");
         lblCrearUsurio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblCrearUsurioMouseClicked(evt);
@@ -119,46 +125,44 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        escritorio.setLayer(cajaContra, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(cajaUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        escritorio.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(btnIngresar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(lblCrearUsurio, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(lblConfiguracion, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(lblAdministrarTecnicos, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(lblEliminarUsuarios, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(lblNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(25, 25, 25)
                 .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEliminarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(lblEliminarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(escritorioLayout.createSequentialGroup()
                         .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(escritorioLayout.createSequentialGroup()
-                                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lblCrearUsurio, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(escritorioLayout.createSequentialGroup()
-                                        .addComponent(cajaContra, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 79, Short.MAX_VALUE))
-                                    .addGroup(escritorioLayout.createSequentialGroup()
-                                        .addComponent(cajaUsuario)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnIngresar))))
+                                .addComponent(lblConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(escritorioLayout.createSequentialGroup()
-                                .addComponent(lblCrearUsurio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cajaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                                .addComponent(btnIngresar)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblAdministrarTecnicos, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(103, 103, 103))
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,13 +170,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(cajaUsuario)
-                    .addComponent(btnIngresar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                    .addComponent(cajaContra))
-                .addGap(30, 30, 30)
+                    .addComponent(btnIngresar)
+                    .addComponent(cajaUsuario))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCrearUsurio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,9 +188,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
-                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,31 +225,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
 
-        if (cajaContra.getText().isEmpty() || cajaUsuario.getText().isEmpty()) {
+        if (cajaUsuario.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese los datos necesarios");
 
         } else {
-            usuario = new Usuario();
-            try {
-
-                usuario.setCedula(Integer.parseInt(this.cajaContra.getText()));
-                //usuario.setNombreUsuario(this.cajaUsuario.getText());
-
-                if (ctu.buscarUsuario(usuario).equals("")) {
-
-                    JOptionPane.showMessageDialog(this, "Usuario encontrado");
-                    usuario = null;
-                    limpiarCaja();
-
-                }
-
-            } catch (HeadlessException e) {
-                JOptionPane.showMessageDialog(this, "Error a la ingresar por favor verifique su contraseña y usuario");
-
-            }
-
+            
+           // usuario=new Usuario();
+          try{
+            usuario.setCedula(Integer.parseInt(cajaUsuario.getText()));
+            ctu.buscarUsuario(usuario);
+            lblNombre.setText(usuario.getNombreUsuario());
+              System.out.println(" si se realizo");
+            
+          }catch(Exception e){
+              
+              System.out.println("error por"+e.getMessage());
+          }
+            
         }
-
 
     }//GEN-LAST:event_btnIngresarActionPerformed
 
@@ -258,7 +251,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblAdministrarTecnicos.setForeground(Color.BLACK);
         if (clickCount == 2) {
             lblAdministrarTecnicos.setForeground(Color.YELLOW);
-            FrmAdministarTecnico frmT = new FrmAdministarTecnico();
+            FrmCrearTecnico frmT = new FrmCrearTecnico();
             escritorio.add(frmT);
             frmT.show();
         }
@@ -312,14 +305,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
-    private javax.swing.JTextField cajaContra;
     private javax.swing.JTextField cajaUsuario;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblAdministrarTecnicos;
     private javax.swing.JLabel lblConfiguracion;
     private javax.swing.JLabel lblCrearUsurio;
     private javax.swing.JLabel lblEliminarUsuarios;
+    private javax.swing.JLabel lblNombre;
     // End of variables declaration//GEN-END:variables
 }

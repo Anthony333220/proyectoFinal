@@ -15,9 +15,9 @@ public class Revision{
     private Tecnico tecnico;
     private String tipoRevision;
     private String observacione;
-    private boolean estado;
+    private String estado;
 
-    public Revision(Vehiculo vehiculo, Date fecha, Time hora, Tecnico tecnico, String tipoRevision, String observacione, boolean estado) {
+    public Revision(Vehiculo vehiculo, Date fecha, Time hora, Tecnico tecnico, String tipoRevision, String observacione, String estado) {
         this.vehiculo = vehiculo;
         this.fecha = fecha;
         this.hora = hora;
@@ -31,7 +31,7 @@ public class Revision{
         this.fecha = fecha;
     }
     
-    public Revision(Vehiculo vehiculo, Date fecha, Time hora, Tecnico tecnico, String observacione, boolean estado) {
+    public Revision(Vehiculo vehiculo, Date fecha, Time hora, Tecnico tecnico, String observacione,String estado) {
         this.vehiculo = vehiculo;
         this.fecha = fecha;
         this.hora = hora;
@@ -88,11 +88,11 @@ public class Revision{
         this.observacione = observacione;
     }
 
-    public boolean isEstado() {
+    public String isEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

@@ -7,6 +7,7 @@ package Controladores;
 
 import Archivo.PruebaConexion;
 import Clases.Tecnico;
+import Vistas.FrmMenuUsuarios;
 import Vistas.FrmPrincipal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,36 +25,26 @@ public class ControladorTecnicos {
     private PruebaConexion conn;
     private Statement sentencias;
     private ResultSet datos;
-    
-    
-    
-    
-    
-    
+    private Tecnico tecnico;
 
     public ControladorTecnicos() {
+        conn = FrmMenuUsuarios.getConexion();
+        this.sentencias = conn.getSentencias();
+        this.datos = conn.getDatos();
+
+    }
+
+    public ControladorTecnicos(PruebaConexion conn) {
 
         this.conn = conn;
         this.sentencias = conn.getSentencias();
         this.datos = conn.getDatos();
 
     }
-    
-    
-    
-    
-    
-    
-    
-    
 
- 
     public PruebaConexion getConn() {
         return conn;
     }
-    
-    
-    
 
     public Statement getSentencias() {
         return sentencias;
@@ -62,172 +53,118 @@ public class ControladorTecnicos {
     public ResultSet getDatos() {
         return datos;
     }
-    
-    
-    
-       public ControladorTecnicos(PruebaConexion conn) {
-        conn = FrmPrincipal.getConexion();
-        this.sentencias = conn.getSentencias();
-        this.datos = conn.getDatos();
 
-    }
-       public boolean agregarTecnico(Tecnico tecnico){
-           
-           
-           System.out.println("antes de la sentencia  de agregar oficial");
+    public boolean agregarTecnico(Tecnico tecnico) {
+
+        System.out.println("antes de la sentencia  de agregar Tecnico");
         try {
-            
-           SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-           
-           
-           sentencias.execute("INSERT INTO tecni_cos VALUES(null,"+tecnico.getCedula()+",'"+tecnico.getNombre()+"','"+f.format(tecnico.getFechaNacimiento())+"',"+tecnico.getTelefono()+",'"+tecnico.getCorreoElectrónico()+"',"+tecnico.getSalario()+")");
-          
+
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+
+            sentencias.execute("INSERT INTO tecni_cos VALUES(null," + tecnico.getCedula() + ",'" + tecnico.getNombre() + "','" + f.format(tecnico.getFechaNacimiento()) + "'," + tecnico.getTelefono() + ",'" + tecnico.getCorreoElectrónico() + "'," + tecnico.getSalario() + ")");
+
             System.out.println(" si se cimplio la sentencia");
-           
-           
-           return true;
-           
+
+            return true;
+
         } catch (SQLException ex) {
             System.out.println("Error al añadir");
         }
         return false;
     }
-       
-       
-       
-       
-       
-       
-       public boolean eliminar(Tecnico tecnico){
-           
-           
-           
-           System.out.println(" antes de la sentencia");
+
+    public boolean deleteTecnico(Tecnico tecnico) {
+
+        System.out.println(" antes de la sentencia");
         try {
-            
-            
-            
-            
-            this.sentencias.executeUpdate("delete from tecni_cos where cedula="+tecnico.getCedula());
-            
+
+            this.sentencias.executeUpdate("delete from tecni_cos where cedula=" + tecnico.getCedula());
+
             System.out.println(" si se elimino tecnico");
             return true;
-            
-            
+
         } catch (SQLException ex) {
-                
+
             System.out.println("No se borro el tecnico");
-            JOptionPane.showMessageDialog(null,"NO SE BORRO TECNICO"+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "NO SE BORRO TECNICO" + ex.getMessage());
         }
-            return false;
+        return false;
     }
-         public Tecnico buscarTecnico(Tecnico tecnico){
+
+    public Tecnico buscarTecnico(Tecnico tecnico) {
         try {
-            
-            this.datos = this.sentencias.executeQuery("select * from tecni_cos where cedula="+tecnico.getCedula());
-                
-                if(datos.next())
-                {
-             
-                    
-                    Tecnico tecnicoSiguiente = new Tecnico();
-                    
-                    
-                    
-                    
-                    tecnicoSiguiente.setCedula(datos.getInt(2));
-                    
-                    
-                    tecnicoSiguiente.setNombre(datos.getString(3));
-                    
-                    tecnicoSiguiente.setFechaNacimiento(datos.getDate(4));
-                    
-                    tecnicoSiguiente.setTelefono(datos.getInt(5));
-                    
-                    tecnicoSiguiente.setCorreoElectrónico(datos.getString(6));
-                    
-                    
-                    tecnicoSiguiente.setSalario(datos.getDouble(7));
-                    
-                    
-                    System.out.println(" si se encontro tecnico");
-                    
-                    return tecnicoSiguiente;//retornanmos eñl siguiente tecnico
-                } 
-                
-        }catch (SQLException ex) {
-            
-            
-            
-                System.out.println("No se escuentra el tecnico");
+
+            this.datos = this.sentencias.executeQuery("select * from tecni_cos where cedula=" + tecnico.getCedula());
+
+            if (datos.next()) {
+
+                Tecnico tecnicoSiguiente = new Tecnico();
+
+                tecnicoSiguiente.setCedula(datos.getInt(2));
+
+                tecnicoSiguiente.setNombre(datos.getString(3));
+
+                tecnicoSiguiente.setFechaNacimiento(datos.getDate(4));
+
+                tecnicoSiguiente.setTelefono(datos.getInt(5));
+
+                tecnicoSiguiente.setCorreoElectrónico(datos.getString(6));
+
+                tecnicoSiguiente.setSalario(datos.getDouble(7));
+
+                System.out.println(" si se encontro tecnico");
+
+                return tecnicoSiguiente;//retornanmos eñl siguiente tecnico
             }
+
+        } catch (SQLException ex) {
+
+            System.out.println("No se escuentra el tecnico");
+        }
         return null;
 
     }
-      public boolean actualizarTecnicos(Tecnico tecnico){
-        
-        try {  
-            
-            
-              
-            this.sentencias.executeUpdate("UPDATE tecni_cos SET nombre='"+tecnico.getNombre()+"' WHERE cedula ='"+tecnico.getCedula()+"';");
-            
+
+    public boolean actualizarTecnicos(Tecnico tecnico) {
+
+        try {
+
+            this.sentencias.executeUpdate("UPDATE tecni_cos SET nombre='" + tecnico.getNombre() + "' WHERE cedula ='" + tecnico.getCedula() + "';");
+
             JOptionPane.showMessageDialog(null, "iNformacion actualizada de tecnico");
-            
+
             return true;
-            
+
         } catch (SQLException ex) {
-            
-            
-            
+
             System.out.println("No se logro actualizar tecnicos");
         }
-        
-        
-        return false;
-    } 
-      
-      
-      //arrayalis que contiene toda la lista de los tecnicos creados
-      
-      
-      
-      public ArrayList<Tecnico> listaTecnicos(){
-          
-          
-          
-          //lista de  tecnicos wue se añadieron
-        ArrayList<Tecnico> tecnicosListado = new ArrayList();
-            try {
-                
-                
-                this.datos = this.sentencias.executeQuery("select * from tecni_cos");
-                
-                while(datos.next()){
-              
-                    tecnicosListado.add(new Tecnico(datos.getInt(2),datos.getString(3),datos.getDate(4),datos.getInt(5),datos.getString(6),datos.getDouble(7)));
-               
-                }
-                JOptionPane.showMessageDialog(null,"Lista se dio con exito");
-                
-                
-                
-                return tecnicosListado;
-                
-                
-                
-                
-            } catch (SQLException ex) {
-                System.out.println("LISTA DE TERCNICOS NO FUNCIONO");
-            }
-        return null; 
-    }
-       
-       
-       
-   
-       
 
-    
+        return false;
+    }
+
+    //arrayalis que contiene toda la lista de los tecnicos creados
+    public ArrayList<Tecnico> listaTecnicos() {
+
+        //lista de  tecnicos wue se añadieron
+        ArrayList<Tecnico> tecnicosListado = new ArrayList();
+        try {
+
+            this.datos = this.sentencias.executeQuery("select * from tecni_cos");
+
+            while (datos.next()) {
+
+                tecnicosListado.add(new Tecnico(datos.getInt(2), datos.getString(3), datos.getDate(4), datos.getInt(5), datos.getString(6), datos.getDouble(7)));
+
+            }
+            JOptionPane.showMessageDialog(null, "Lista se dio con exito");
+
+            return tecnicosListado;
+
+        } catch (SQLException ex) {
+            System.out.println("LISTA DE TERCNICOS NO FUNCIONO");
+        }
+        return null;
+    }
 
 }

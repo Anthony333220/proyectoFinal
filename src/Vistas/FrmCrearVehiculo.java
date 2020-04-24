@@ -9,7 +9,6 @@ import Clases.Cita;
 import Clases.Vehiculo;
 import Controladores.ControladorCitas;
 import Controladores.ControladorVehiculos;
-import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -17,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author Emanuel CB
  */
-public class FrmCrearCitas extends javax.swing.JInternalFrame {
+public class FrmCrearVehiculo extends javax.swing.JInternalFrame {
 
     private ArrayList<Vehiculo> vehiculos = new ArrayList();
     private Vehiculo vehiculo;
@@ -25,14 +24,13 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
     private Cita cita;
     private ControladorCitas ctlc;
 
-    public FrmCrearCitas() {
+    public FrmCrearVehiculo() {
 
         ctlv = new ControladorVehiculos();
         ctlv = new ControladorVehiculos();
         vehiculo = null;
 
         initComponents();
-        cajaId.setVisible(false);
     }
 
     /**
@@ -44,13 +42,8 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        cajaId = new javax.swing.JTextField();
         lblFecha = new javax.swing.JLabel();
-        comboxHora = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -65,12 +58,8 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
         cajaNombre = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
-        txtFechaInscripcion = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
         cajaModelo1 = new javax.swing.JTextField();
-        combox = new javax.swing.JComboBox<>();
-        jLabel13 = new javax.swing.JLabel();
-        txtFecha = new com.toedter.calendar.JDateChooser();
+        txtDate = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setIconifiable(true);
@@ -78,50 +67,32 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
         setResizable(true);
         getContentPane().setLayout(null);
 
-        jLabel1.setText("ID");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 50, 33);
-
-        jLabel2.setText("FECHA");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 39, 60, 31);
-
-        jLabel3.setText("HORA");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 76, 50, 34);
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("                      DATOS DEL VEHICULO");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(124, 164, 368, 34);
-        getContentPane().add(cajaId);
-        cajaId.setBounds(60, 0, 117, 30);
+        jLabel4.setBounds(210, 80, 368, 34);
         getContentPane().add(lblFecha);
         lblFecha.setBounds(286, 39, 133, 26);
 
-        comboxHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8 am", "9 am", "10am", "11am ", "12am", "13pm", "14pm", "15pm", "16pm", "17pm" }));
-        getContentPane().add(comboxHora);
-        comboxHora.setBounds(60, 80, 120, 30);
-
         jLabel5.setText("PLACA");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 210, 90, 23);
+        jLabel5.setBounds(20, 40, 60, 23);
 
         jLabel6.setText("MARCA");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 250, 70, 30);
+        jLabel6.setBounds(20, 70, 70, 30);
 
         jLabel7.setText("MODELO");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(0, 310, 86, 20);
+        jLabel7.setBounds(20, 110, 60, 30);
 
         jLabel8.setText("AÑO");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(10, 360, 60, 20);
+        jLabel8.setBounds(20, 170, 60, 20);
 
         jLabel9.setText("FECHA INSCRIPCION");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(310, 210, 124, 30);
+        jLabel9.setBounds(10, 210, 110, 30);
 
         jLabel10.setText("CEDULA POROPIETARIO");
         getContentPane().add(jLabel10);
@@ -131,22 +102,22 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel11);
         jLabel11.setBounds(300, 320, 140, 20);
         getContentPane().add(cajaPlaca);
-        cajaPlaca.setBounds(60, 210, 170, 30);
+        cajaPlaca.setBounds(80, 30, 180, 30);
         getContentPane().add(cajaMarca);
-        cajaMarca.setBounds(60, 250, 170, 30);
+        cajaMarca.setBounds(80, 70, 180, 30);
         getContentPane().add(cajaAño);
-        cajaAño.setBounds(60, 350, 170, 30);
+        cajaAño.setBounds(80, 160, 180, 30);
         getContentPane().add(cajaPropi);
         cajaPropi.setBounds(430, 260, 140, 30);
         getContentPane().add(cajaNombre);
         cajaNombre.setBounds(430, 310, 140, 30);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel12.setText("    CREAR   CITAS");
+        jLabel12.setText("    Crear  Vehiculo");
         getContentPane().add(jLabel12);
         jLabel12.setBounds(300, 0, 270, 50);
 
-        btnAgregar.setText("AGREGAR");
+        btnAgregar.setText("Crear");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -154,24 +125,10 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnAgregar);
         btnAgregar.setBounds(393, 360, 160, 23);
-        getContentPane().add(txtFechaInscripcion);
-        txtFechaInscripcion.setBounds(430, 210, 140, 30);
-
-        jButton1.setText("Modificcar ");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(390, 390, 160, 20);
         getContentPane().add(cajaModelo1);
-        cajaModelo1.setBounds(60, 300, 170, 30);
-
-        combox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activa", "Cancelada" }));
-        getContentPane().add(combox);
-        combox.setBounds(100, 400, 130, 30);
-
-        jLabel13.setText("Status");
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(10, 400, 70, 30);
-        getContentPane().add(txtFecha);
-        txtFecha.setBounds(60, 40, 120, 30);
+        cajaModelo1.setBounds(80, 110, 180, 30);
+        getContentPane().add(txtDate);
+        txtDate.setBounds(140, 210, 130, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -187,19 +144,15 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
             
         }else{
             
-            if(txtFechaInscripcion.getCalendar().before(this)){
+            if(txtDate.getCalendar().before(this)){
                 JOptionPane.showMessageDialog(null, "La fecha que elegiste ya paso");
                 
             }else{
                 
                  cita=new Cita();
-                 cita.setFecha(this.txtFechaInscripcion.getDate());
-                 cita.setHora(String.valueOf(comboxHora.getSelectedItem()));
-                cita.setStatus(String.valueOf(combox.getSelectedItem()));
-                cita.setVehiculo(new Vehiculo(Integer.parseInt(cajaPlaca.getText()), cajaMarca.getText(), cajaModelo1.getText(),
-                       cajaAño.getText(), (Date) txtFechaInscripcion.getDate(), Integer.parseInt(cajaPropi.getText()),cajaNombre.getText()));
-                 //Haga la prueba voy
-                  if(ctlc.crearCita(cita)){
+                 cita.setFecha(this.txtDate.getDate());
+               
+                 if(ctlc.crearCita(cita)){
                      
                      JOptionPane.showMessageDialog(null,"SE AGREGO UN CITA");
                  }
@@ -229,22 +182,14 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JTextField cajaAño;
-    private javax.swing.JTextField cajaId;
     private javax.swing.JTextField cajaMarca;
     private javax.swing.JTextField cajaModelo1;
     private javax.swing.JTextField cajaNombre;
     private javax.swing.JTextField cajaPlaca;
     private javax.swing.JTextField cajaPropi;
-    private javax.swing.JComboBox<String> combox;
-    private javax.swing.JComboBox<String> comboxHora;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -252,7 +197,6 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblFecha;
-    private com.toedter.calendar.JDateChooser txtFecha;
-    private com.toedter.calendar.JDateChooser txtFechaInscripcion;
+    private com.toedter.calendar.JDateChooser txtDate;
     // End of variables declaration//GEN-END:variables
 }

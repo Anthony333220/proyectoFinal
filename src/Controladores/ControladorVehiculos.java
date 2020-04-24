@@ -70,7 +70,7 @@ public class ControladorVehiculos {
                 automovil.setModelo(datos.getString(3));
                 automovil.setAnio(datos.getString(4));
                 automovil.setFechaInscripcion(datos.getDate(5));
-                automovil.setCedula(datos.getString(6));
+                automovil.setCedula(datos.getInt(6));
                 automovil.setNombrePropietario(datos.getString(7));
 
                 return automovil;
@@ -119,7 +119,7 @@ public class ControladorVehiculos {
 
             while (datos.next()) {
 
-                            listaVehiculos.add(new Vehiculo(datos.getInt(2), datos.getString(3), datos.getString(4), datos.getString(5), datos.getDate(6), datos.getString(7), datos.getString(8)));
+             listaVehiculos.add(new Vehiculo(datos.getInt(2), datos.getString(3), datos.getString(4), datos.getString(5), datos.getDate(6), datos.getInt(7), datos.getString(8)));
             }
             return listaVehiculos;
         } catch (SQLException ex) {

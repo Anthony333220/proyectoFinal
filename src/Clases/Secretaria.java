@@ -23,6 +23,16 @@ public class Secretaria {
         this.correoElectrónico = correoElectrónico;
     }
 
+    public Secretaria(){
+        this.cedula=0;
+        this.correoElectrónico=null;
+        this.fechaNacimiento=null;
+        this.nombre=null;
+        this.telefono=0;
+        
+        
+    }
+
     public int getCedula() {
         return cedula;
     }

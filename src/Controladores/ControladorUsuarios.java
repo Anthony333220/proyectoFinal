@@ -59,7 +59,7 @@ public class ControladorUsuarios {
     public Usuario buscarUsuario(Usuario usuario) {
         try {
 
-            this.datos = this.sentencias.executeQuery("select * from usuarios where cedula=" + usuario.getCedula());
+            this.datos = this.sentencias.executeQuery("select * from usuarios where cedula=" +usuario.getCedula());
 
             if (datos.next()) {
 

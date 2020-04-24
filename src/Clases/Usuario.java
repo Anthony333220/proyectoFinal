@@ -114,4 +114,9 @@ public class Usuario {
         this.cedula = cedula;
     }
 
+    @Override
+    public String toString() {
+        return "Usuario{" + "nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + ", correoElectronico=" + correoElectronico + ", nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena + ", tipoUsuario=" + tipoUsuario + ", cedula=" + cedula + '}';
+    }
+
 }

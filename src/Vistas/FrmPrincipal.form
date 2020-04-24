@@ -23,10 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
-              <Component id="escritorio" min="-2" max="-2" attributes="0"/>
-          </Group>
+          <Component id="escritorio" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -42,33 +39,25 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblEliminarUsuarios" min="-2" pref="141" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                          <Component id="lblEliminarUsuarios" min="-2" pref="141" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel2" pref="78" max="32767" attributes="0"/>
-                                      <Component id="jLabel1" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="lblCrearUsurio" min="-2" pref="206" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="cajaContra" min="-2" pref="113" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="79" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="cajaUsuario" max="32767" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="btnIngresar" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="lblConfiguracion" min="-2" pref="134" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblCrearUsurio" min="-2" pref="110" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="lblConfiguracion" min="-2" pref="134" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" pref="95" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cajaUsuario" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <EmptySpace pref="51" max="32767" attributes="0"/>
+                                  <Component id="btnIngresar" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -76,6 +65,11 @@
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblNombre" min="-2" pref="110" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -85,15 +79,12 @@
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cajaUsuario" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnIngresar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cajaUsuario" alignment="3" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel2" pref="23" max="32767" attributes="0"/>
-                      <Component id="cajaContra" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblNombre" min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblCrearUsurio" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="lblConfiguracion" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
@@ -107,18 +98,11 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="cajaContra">
-        </Component>
         <Component class="javax.swing.JTextField" name="cajaUsuario">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Usuario"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Password"/>
+            <Property name="text" type="java.lang.String" value="Cedula Usuario"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnIngresar">
@@ -131,7 +115,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblCrearUsurio">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Crear Usuario"/>
+            <Property name="text" type="java.lang.String" value="Crear  o modificar Usuario"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblCrearUsurioMouseClicked"/>
@@ -160,6 +144,8 @@
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblEliminarUsuariosMouseClicked"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblNombre">
         </Component>
       </SubComponents>
     </Container>
