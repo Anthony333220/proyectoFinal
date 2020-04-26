@@ -34,16 +34,16 @@ public class PruebaConexion {
   //           Class.forName(driver);
             conexion = DriverManager.getConnection(url, user, password);
             this.sentencias=this.conexion.createStatement();
-            System.out.println("si se connecto ls madrota");
+            System.out.println("si se connecto bien");
             if(conexion!=null)
             {
-                System.out.println("se conecto la madre");
+                System.out.println("se conecto la bien");
             }       
             
              
         } catch (SQLException e) {
             
-            System.out.println("no se conecto la madre");
+            System.out.println("no se conecto la bien");
             
         }
         return conexion;

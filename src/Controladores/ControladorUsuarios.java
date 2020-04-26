@@ -1,11 +1,11 @@
 package Controladores;
 
 
-import Archivo.Configuraciones;
 import Archivo.PruebaConexion;
 import Clases.Usuario;
-import Vistas.FrmCrearUsuarios;
-import Vistas.FrmPrincipal;
+
+import Vistas.FrmMenuPrincipal;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,7 +24,7 @@ public class ControladorUsuarios {
    
    
     public ControladorUsuarios() {
-       conn  = FrmPrincipal.getConexion();
+       conn  = FrmMenuPrincipal.getConexion();
         
         this.sentencias = conn.getSentencias();
         this.datos = conn.getDatos();

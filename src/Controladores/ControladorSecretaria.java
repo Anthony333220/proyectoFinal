@@ -2,8 +2,8 @@ package Controladores;
 
 import Archivo.PruebaConexion;
 import Clases.Secretaria;
-import Vistas.FrmMenuUsuarios;
-import Vistas.FrmPrincipal;
+import Vistas.FrmMenuPrincipal;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -30,7 +30,7 @@ public class ControladorSecretaria {
 
     public ControladorSecretaria() {
 
-        conn = FrmMenuUsuarios.getConexion();
+        conn = FrmMenuPrincipal.getConexion();
 
         this.sentencias = conn.getSentencias();
         this.datos = conn.getDatos();

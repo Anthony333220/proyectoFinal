@@ -24,15 +24,18 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
     private ControladorVehiculos ctlv;
     private Cita cita;
     private ControladorCitas ctlc;
+    private String hora;
+    private String minutos;
+    private String segundos;
 
     public FrmCrearCitas() {
 
         ctlv = new ControladorVehiculos();
-        ctlv = new ControladorVehiculos();
+        ctlc = new ControladorCitas();
         vehiculo = null;
 
         initComponents();
-        cajaId.setVisible(false);
+       // cajaId.setVisible(false);
     }
 
     /**
@@ -44,215 +47,315 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        cajaId = new javax.swing.JTextField();
-        lblFecha = new javax.swing.JLabel();
-        comboxHora = new javax.swing.JComboBox<>();
+        BtnAgregar = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        cajaPlaca = new javax.swing.JTextField();
-        cajaMarca = new javax.swing.JTextField();
-        cajaAño = new javax.swing.JTextField();
-        cajaPropi = new javax.swing.JTextField();
-        cajaNombre = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        btnAgregar = new javax.swing.JButton();
-        txtFechaInscripcion = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
-        cajaModelo1 = new javax.swing.JTextField();
-        combox = new javax.swing.JComboBox<>();
-        jLabel13 = new javax.swing.JLabel();
-        txtFecha = new com.toedter.calendar.JDateChooser();
+        JCombreBoxMinutos = new javax.swing.JComboBox<>();
+        JComboBoxHora = new javax.swing.JComboBox<>();
+        JComboBoxSegundos = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        BtnSeleccionarCliente = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        TxtNombre = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        TxtCedula = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        getContentPane().setLayout(null);
 
-        jLabel1.setText("ID");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 50, 33);
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel2.setText("FECHA");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 39, 60, 31);
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel2.setText("Fecha:");
+        jLabel2.setToolTipText("");
 
-        jLabel3.setText("HORA");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 76, 50, 34);
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("                      DATOS DEL VEHICULO");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(124, 164, 368, 34);
-        getContentPane().add(cajaId);
-        cajaId.setBounds(60, 0, 117, 30);
-        getContentPane().add(lblFecha);
-        lblFecha.setBounds(286, 39, 133, 26);
-
-        comboxHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8 am", "9 am", "10am", "11am ", "12am", "13pm", "14pm", "15pm", "16pm", "17pm" }));
-        getContentPane().add(comboxHora);
-        comboxHora.setBounds(60, 80, 120, 30);
-
-        jLabel5.setText("PLACA");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 210, 90, 23);
-
-        jLabel6.setText("MARCA");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 250, 70, 30);
-
-        jLabel7.setText("MODELO");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(0, 310, 86, 20);
-
-        jLabel8.setText("AÑO");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(10, 360, 60, 20);
-
-        jLabel9.setText("FECHA INSCRIPCION");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(310, 210, 124, 30);
-
-        jLabel10.setText("CEDULA POROPIETARIO");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(300, 260, 130, 20);
-
-        jLabel11.setText("NOMBRE PROPIETARIO");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(300, 320, 140, 20);
-        getContentPane().add(cajaPlaca);
-        cajaPlaca.setBounds(60, 210, 170, 30);
-        getContentPane().add(cajaMarca);
-        cajaMarca.setBounds(60, 250, 170, 30);
-        getContentPane().add(cajaAño);
-        cajaAño.setBounds(60, 350, 170, 30);
-        getContentPane().add(cajaPropi);
-        cajaPropi.setBounds(430, 260, 140, 30);
-        getContentPane().add(cajaNombre);
-        cajaNombre.setBounds(430, 310, 140, 30);
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel12.setText("    CREAR   CITAS");
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(300, 0, 270, 50);
-
-        btnAgregar.setText("AGREGAR");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        BtnAgregar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        BtnAgregar.setText("Agregar");
+        BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                BtnAgregarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgregar);
-        btnAgregar.setBounds(393, 360, 160, 23);
-        getContentPane().add(txtFechaInscripcion);
-        txtFechaInscripcion.setBounds(430, 210, 140, 30);
 
-        jButton1.setText("Modificcar ");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(390, 390, 160, 20);
-        getContentPane().add(cajaModelo1);
-        cajaModelo1.setBounds(60, 300, 170, 30);
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel5.setText("Hora:");
+        jLabel5.setToolTipText("");
 
-        combox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activa", "Cancelada" }));
-        getContentPane().add(combox);
-        combox.setBounds(100, 400, 130, 30);
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel6.setText("Minutos:");
+        jLabel6.setToolTipText("");
 
-        jLabel13.setText("Status");
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(10, 400, 70, 30);
-        getContentPane().add(txtFecha);
-        txtFecha.setBounds(60, 40, 120, 30);
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel7.setText("Segundos:");
+        jLabel7.setToolTipText("");
+
+        JCombreBoxMinutos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        JCombreBoxMinutos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige Minuto", "1\t", "2\t", "3\t", "4\t", "5\t", "6\t", "7\t", "8\t", "9\t", "10", "11\t", "12\t", "13\t", "14\t", "15\t", "16\t", "17\t", "18\t", "19\t", "20", "21\t", "22\t", "23\t", "24\t", "25\t", "26\t", "27\t", "28\t", "29\t", "30", "31\t", "32\t", "33\t", "34\t", "35\t", "36\t", "37\t", "38\t", "39\t", "40", "41\t", "42\t", "43\t", "44\t", "45\t", "46\t", "47\t", "48\t", "49\t", "50", "51\t", "52\t", "53\t", "54\t", "55\t", "56\t", "57\t", "58\t", "59", " " }));
+
+        JComboBoxHora.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        JComboBoxHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige Hora", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17" }));
+        JComboBoxHora.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                JComboBoxHoraItemStateChanged(evt);
+            }
+        });
+
+        JComboBoxSegundos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        JComboBoxSegundos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige Segundos", "1\t", "2\t", "3\t", "4\t", "5\t", "6\t", "7\t", "8\t", "9\t", "10", "11\t", "12\t", "13\t", "14\t", "15\t", "16\t", "17\t", "18\t", "19\t", "20", "21\t", "22\t", "23\t", "24\t", "25\t", "26\t", "27\t", "28\t", "29\t", "30", "31\t", "32\t", "33\t", "34\t", "35\t", "36\t", "37\t", "38\t", "39\t", "40", "41\t", "42\t", "43\t", "44\t", "45\t", "46\t", "47\t", "48\t", "49\t", "50", "51\t", "52\t", "53\t", "54\t", "55\t", "56\t", "57\t", "58\t", "59" }));
+
+        BtnSeleccionarCliente.setText("Seleccionar Cliente");
+        BtnSeleccionarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSeleccionarClienteActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel3.setText("Cliente:");
+        jLabel3.setToolTipText("");
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel1.setText("Nombre Cliente:");
+
+        TxtNombre.setEditable(false);
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel4.setText("Cedula:");
+
+        TxtCedula.setEditable(false);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TxtNombre)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TxtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnSeleccionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(BtnSeleccionarCliente))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(TxtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel5))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JComboBoxSegundos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(JComboBoxHora, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JCombreBoxMinutos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 250, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BtnAgregar)
+                .addGap(37, 37, 37))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JComboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(JCombreBoxMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(JComboBoxSegundos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addComponent(BtnAgregar)
+                .addGap(26, 26, 26))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
 
-       
-        if(cajaPlaca.getText().isEmpty()||cajaMarca.getText().isEmpty()||cajaAño.getText().isEmpty()||cajaPropi.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Ingrese los datos respectivos");
-            
-            
-            
-            
-        }else{
-            
-            if(txtFechaInscripcion.getCalendar().before(this)){
-                JOptionPane.showMessageDialog(null, "La fecha que elegiste ya paso");
-                
-            }else{
-                
-                 cita=new Cita();
-                 cita.setFecha(this.txtFechaInscripcion.getDate());
-                 cita.setHora(String.valueOf(comboxHora.getSelectedItem()));
-                cita.setStatus(String.valueOf(combox.getSelectedItem()));
-                cita.setVehiculo(new Vehiculo(Integer.parseInt(cajaPlaca.getText()), cajaMarca.getText(), cajaModelo1.getText(),
-                       cajaAño.getText(), (Date) txtFechaInscripcion.getDate(), Integer.parseInt(cajaPropi.getText()),cajaNombre.getText()));
-                 //Haga la prueba voy
-                  if(ctlc.crearCita(cita)){
-                     
-                     JOptionPane.showMessageDialog(null,"SE AGREGO UN CITA");
-                 }
-                 
-                
-            }
-            
-            
+        cita= new Cita();
+
+        cita.setFecha(this.jDateChooser1.getDate());
+
+        if(this.JComboBoxHora.getSelectedIndex()>0 && this.JCombreBoxMinutos.getSelectedIndex()>0 && this.JComboBoxSegundos.getSelectedIndex()>0 )
+        {
+
+            hora = String.valueOf(this.JComboBoxHora.getSelectedItem());
+            minutos = String.valueOf(this.JCombreBoxMinutos.getSelectedItem());
+            segundos = String.valueOf(this.JComboBoxSegundos.getSelectedItem());
+            cita.setHora( concatenarhora() );
+            cita.setStatus("activado");
+
+            if(vehiculo!=null){
+
+                cita.setVehiculo(vehiculo);
+
+            }else{JOptionPane.showMessageDialog(this, "Debe agregar un vehiculo");}
+
+            if(cita.comprobar())
+            {
+
+                if(ctlc.ValidarFK(cita))
+                {
+                    if(ctlc.ValidarCantCitas(cita))
+                    {
+
+                        if(ctlc.validarPK(cita)){
+
+                            if( ctlc.añadir(cita))
+                            {
+                                JOptionPane.showMessageDialog(this, "Cita agregada");
+                                cita=null;
+                                vehiculo=null;
+                                Limpiar();
+                            }else{JOptionPane.showMessageDialog(this, "surgio un problema al añadir");}
+
+                        }else{JOptionPane.showMessageDialog(this, "no puede tener 2 citas activas");}
+
+                    }else{JOptionPane.showMessageDialog(this, "Ya no hay mas citas disponibles para hoy");}
+
+                }else{JOptionPane.showMessageDialog(this, "No se encuentra ese cliente");}
+
+            }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos"); }
+
+        }else{JOptionPane.showMessageDialog(this, "Debe selecionar una hora, minuto y segundo");}
+
+    }//GEN-LAST:event_BtnAgregarActionPerformed
+
+    private void JComboBoxHoraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JComboBoxHoraItemStateChanged
+
+    }//GEN-LAST:event_JComboBoxHoraItemStateChanged
+
+    private void BtnSeleccionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeleccionarClienteActionPerformed
+
+        FrmMostrarCitas jdiagbuscarclientes = new FrmMostrarCitas(null,true);
+        jdiagbuscarclientes.setVisible(true);
+
+        if( jdiagbuscarclientes.getCita()!=null )
+        {
+
+          //  vehiculo = jdiagbuscarclientes
+            this.TxtCedula.setEditable(true);
+            this.TxtNombre.setEditable(true);
+            this.TxtCedula.setText(String.valueOf( vehiculo.getCedula()));
+            this.TxtNombre.setText(String.valueOf(vehiculo.getMarca()));
+            this.TxtCedula.setEditable(false);
+            this.TxtNombre.setEditable(false);
+        }else
+        {
+            System.out.println("no selecciono un cliente");
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_btnAgregarActionPerformed
+    }//GEN-LAST:event_BtnSeleccionarClienteActionPerformed
 
 
+    
+    
+    
+      public String concatenarhora() {
+        //una sola hora y eliminamos espacios
+        return (this.hora+":"+this.minutos+":"+this.segundos+"").replaceAll("\\s",""); 
+        
+    }
+    
+    
+    public void Limpiar() {
+   
+        this.jDateChooser1.setCalendar(null);
+        this.TxtCedula.setText("");
+        this.TxtNombre.setText("");
+        this.JComboBoxHora.setSelectedIndex(0);
+        this.JCombreBoxMinutos.setSelectedIndex(0);
+        this.JComboBoxSegundos.setSelectedIndex(0);
+        
+        
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
-    private javax.swing.JTextField cajaAño;
-    private javax.swing.JTextField cajaId;
-    private javax.swing.JTextField cajaMarca;
-    private javax.swing.JTextField cajaModelo1;
-    private javax.swing.JTextField cajaNombre;
-    private javax.swing.JTextField cajaPlaca;
-    private javax.swing.JTextField cajaPropi;
-    private javax.swing.JComboBox<String> combox;
-    private javax.swing.JComboBox<String> comboxHora;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BtnAgregar;
+    private javax.swing.JButton BtnSeleccionarCliente;
+    private javax.swing.JComboBox<String> JComboBoxHora;
+    private javax.swing.JComboBox<String> JComboBoxSegundos;
+    private javax.swing.JComboBox<String> JCombreBoxMinutos;
+    private javax.swing.JTextField TxtCedula;
+    private javax.swing.JTextField TxtNombre;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel lblFecha;
-    private com.toedter.calendar.JDateChooser txtFecha;
-    private com.toedter.calendar.JDateChooser txtFechaInscripcion;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

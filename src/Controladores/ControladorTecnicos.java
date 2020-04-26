@@ -7,8 +7,8 @@ package Controladores;
 
 import Archivo.PruebaConexion;
 import Clases.Tecnico;
-import Vistas.FrmMenuUsuarios;
-import Vistas.FrmPrincipal;
+import Vistas.FrmMenuPrincipal;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,7 +28,7 @@ public class ControladorTecnicos {
     private Tecnico tecnico;
 
     public ControladorTecnicos() {
-        conn = FrmMenuUsuarios.getConexion();
+        conn = FrmMenuPrincipal.getConexion();
         this.sentencias = conn.getSentencias();
         this.datos = conn.getDatos();
 
@@ -165,6 +165,27 @@ public class ControladorTecnicos {
             System.out.println("LISTA DE TERCNICOS NO FUNCIONO");
         }
         return null;
+    }
+
+    public Tecnico buscarId(Tecnico tecnico) {
+        Tecnico tbp = null;
+
+        try {
+
+            this.datos = this.sentencias.executeQuery("select * from tecni_cos where cedula=" + tecnico.getCedula());
+            if(datos.next()){
+                tecnico.getNombre();
+                tecnico.getTelefono();
+                tecnico.getCorreoElectrónico();
+                tecnico.getSalario();
+                
+            }            
+        } catch (Exception e) {
+            System.out.println("error no se pudo");
+
+        }
+
+        return tbp;
     }
 
 }

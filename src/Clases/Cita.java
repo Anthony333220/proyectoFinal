@@ -14,16 +14,26 @@ public class Cita  {
     private Vehiculo vehiculo;
     private String status;
    
-    public Cita(int id, Date fecha, String hora, Vehiculo vehiculo,String status) {
-        this.id = id;
+    public Cita( Date fecha, String hora, Vehiculo vehiculo) {
+       
         this.fecha = fecha;
         this.hora = hora;
         this.vehiculo = vehiculo;
         this.status="Activa";
     }
-    public Cita(){
+
+    public Cita(int id, Date fecha, String hora, Vehiculo vehiculo, String status) {
+        this.id = id;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.vehiculo = vehiculo;
+        this.status = status;
+    }
+    
+ 
+        public Cita(){
         
-       this.id = 0;
+       
         this.fecha =null;
         this.hora = null;
         this.vehiculo = null;
@@ -63,9 +73,10 @@ public class Cita  {
     
     
     
-     public boolean comprobarCitas() {
+       
+    public boolean comprobar() {
         
-        return this.fecha!=null && this.hora!=null && this.vehiculo!=null;
+        return this.fecha!=null && this.hora!=null && this.status!=null && this.vehiculo!=null;
     }
     
     

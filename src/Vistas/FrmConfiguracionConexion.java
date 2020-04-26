@@ -5,7 +5,7 @@
  */
 package Vistas;
 
-import Archivo.Configuraciones;
+import Archivo.Configuracion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +23,7 @@ public class FrmConfiguracionConexion extends javax.swing.JInternalFrame {
 
 
     
-    Configuraciones confi;
+    Configuracion confi;
     public FrmConfiguracionConexion() {
         initComponents();
 
@@ -87,7 +87,7 @@ public class FrmConfiguracionConexion extends javax.swing.JInternalFrame {
         jPanel2.add(cajaUsuario);
         cajaUsuario.setBounds(230, 40, 120, 30);
 
-        boxMotor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MySQL" }));
+        boxMotor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mysql", " " }));
         boxMotor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxMotorActionPerformed(evt);
@@ -134,10 +134,14 @@ public class FrmConfiguracionConexion extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,30 +158,28 @@ public class FrmConfiguracionConexion extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
-//        try {
-//
-//
-//            if (cajaServidor.getText().isEmpty() || cajaUsuario.getText().isEmpty()) {
-//                JOptionPane.showMessageDialog(this, "Ingrese los datos correspondientes");
-//
-//            } else {
-//                String url = String.valueOf(cajaServidor.getText());
-//                String usuario = String.valueOf(cajaUsuario.getText());//
-//               confi=new Configuraciones();
-//               confi.conectar2(url, usuario,"");
-//               //jdbc:mysql://localhost:3306/riteve?useServerPrepStmts=true
-//               
-//            }
-//        } catch (Exception e) {
-//
-//            System.out.println("error al guardar devido a " + e.getMessage());
-//            JOptionPane.showMessageDialog(this, "ERROR  DE CONEXION EN VENTANA");
-//
-//        }
-//
-        confi=new Configuraciones();
-        confi.getConectar();
+        try {
 
+
+            if (cajaServidor.getText().isEmpty() || cajaUsuario.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Ingrese los datos correspondientes");
+
+            } else {
+                String url = String.valueOf(cajaServidor.getText());
+                String usuario = String.valueOf(cajaUsuario.getText());//
+               confi=new Configuracion();
+               confi.conectar2(url, usuario,"");
+               //jdbc:mysql://localhost:3306/riteve?useServerPrepStmts=true
+               
+            }
+        } catch (Exception e) {
+
+            System.out.println("error al guardar devido a " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "ERROR  DE CONEXION EN VENTANA");
+
+        }
+
+      
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed

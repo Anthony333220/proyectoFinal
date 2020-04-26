@@ -1,12 +1,14 @@
 package Controladores;
 
+import Archivo.Configuracion;
 import Archivo.PruebaConexion;
 import Clases.Cita;
 import Clases.Revision;
 import Clases.Secretaria;
 import Clases.Tecnico;
 import Clases.Vehiculo;
-import Vistas.FrmPrincipal;
+import Vistas.FrmMenuPrincipal;
+
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -45,9 +47,9 @@ public class ControladorRevision {
 
     public ControladorRevision() {
 
-        conn = FrmPrincipal.getConexion();  //probar com conexion o conectar
+        conn = FrmMenuPrincipal.getConexion();  //probar com conexion o conectar
         try {
-            this.sentencias2 = FrmPrincipal.getConexion().getConexion().createStatement();
+            this.sentencias2 = FrmMenuPrincipal.getConexion().getConexion().createStatement();
         } catch (SQLException ex) {
 
             System.out.println("No se lo gro conectar sentencia  con la conexion");

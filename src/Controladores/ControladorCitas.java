@@ -2,15 +2,14 @@ package Controladores;
 
 import Archivo.PruebaConexion;
 import Clases.Cita;
-import Clases.Secretaria;
 import Clases.Vehiculo;
-import Vistas.FrmMenuUsuarios;
-import Vistas.FrmPrincipal;
+import Vistas.FrmMenuPrincipal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -36,10 +35,10 @@ public class ControladorCitas {
 
     public ControladorCitas() {
 
-        conn = FrmMenuUsuarios.getConexion();
+        conn = FrmMenuPrincipal.getConexion();
         try {
 
-            this.sentencias2 = FrmMenuUsuarios.getConexion().getConectar().createStatement();
+            this.sentencias2 = FrmMenuPrincipal.getConexion().getConectar().createStatement();
         } catch (SQLException ex) {
 
             System.out.println("NO SE CREO SENTENCIA");
@@ -48,23 +47,16 @@ public class ControladorCitas {
         this.datos = conn.getDatos();
     }
 
-    public boolean crearCita(Cita cita) {
-
-        System.out.println("antes de crear la cita el try");
+    public boolean añadir(Cita cita) {
         try {
 
-            SimpleDateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 
-            sentencias.execute("insert into citas values(null,'" + fecha.format(cita.getFecha()) + "','" + cita.getHora() + "','" + cita.getVehiculo().getPlaca() + "','"
-                    + cita.getVehiculo().getMarca() + "','" + cita.getVehiculo().getModelo() + "','" + cita.getVehiculo().getAnio() + "','" + cita.getVehiculo().getFechaInscripcion()
-                    + "','" + cita.getVehiculo().getCedula() + "','" + cita.getVehiculo().getNombrePropietario() + "','" + cita.getStatus() + "')");
-            System.out.println("si se logro crear cita");
-
+            sentencias.execute("insert into citas values(null,'" + f.format(cita.getFecha()) + "','" + cita.getHora() + "','" + cita.getVehiculo().getPlaca() + "','" + cita.getStatus() + "')");
             return true;
 
         } catch (SQLException ex) {
-
-            System.out.println("No se logro crear cita devido a" + ex.getMessage());
+            System.out.println("Error al añadir");
             System.out.println(ex);
         }
         return false;
@@ -95,9 +87,9 @@ public class ControladorCitas {
                 vehiculo = ctlv.buscarVehiculo(vehiculo);
                 Cita cita2 = new Cita(datos.getInt(1), datos.getDate(2), datos.getString(3), vehiculo, datos.getString(4));
 
-                if (cambiarstatusCita(cita2)) {
+                if (CambiarEstadoCita(cita2)) {
 
-                    actualizarCita(cita2);
+                    actualizar(cita2);
                 }
 
                 return cita2;
@@ -111,25 +103,40 @@ public class ControladorCitas {
 
     }
 
-    public boolean cambiarstatusCita(Cita cita) {
-        Date fechaActualizada = new Date();
+    public ArrayList<Cita> listarPorFecha(Cita cita) {
 
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        ArrayList<Cita> citas = new ArrayList();
         try {
-            fechaActualizada = f.parse(f.format(fechaActualizada));
 
-            return true;
-        } catch (ParseException ex) {
-            System.out.println("no se  actualizo la fecha");
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 
+            this.datos = this.sentencias2.executeQuery("select * from citas where fecha ='" + f.format(cita.getFecha()) + "' AND estado = 'activado' ;");
+
+            //si se encontro resultados en la consulta se guardan en el arrayList
+            while (datos.next()) {
+                vehiculo = new Vehiculo();
+                vehiculo.setCedula(datos.getInt(4));
+                Cita cita2 = new Cita(datos.getDate(2), String.valueOf(datos.getTime(3)), ctlv.buscarVehiculo(vehiculo));
+                if (CambiarEstadoCita(cita2)) {
+                    //si la fecha se vencio desactivamos la cita 
+                    actualizar(cita2);
+                }
+
+                citas.add(cita2);
+
+            }
+            //si se encontro una cita o más, las retornamos
+            if (citas.size() > 0) {
+                return citas;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al listar");
+            System.out.println(ex);
         }
-        System.out.println(" no se actualizo la cita");
-
-        return false;
-
+        return null;
     }
 
-    public boolean actualizarCita(Cita cita) {
+    public boolean actualizar(Cita cita) {
 
         try {
 
@@ -141,6 +148,92 @@ public class ControladorCitas {
             System.out.println("Error al actualizar");
         }
         return false;
+    }
+
+    public boolean validarPK(Cita cita) {
+
+        try {
+
+            this.datos = this.sentencias.executeQuery("select * from citas where placa = '" + cita.getVehiculo().getPlaca() + "'  AND status = 'activado'  ;");
+
+            if (datos.next()) {
+
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Error al validarPK");
+
+        }
+
+        return true;
+
+    }
+
+    public boolean ValidarCantCitas(Cita cita) {
+
+        //si está vacio ó hay menos de 4 citas
+        return listarPorFecha(cita) == null || listarPorFecha(cita).size() < 4;
+
+    }
+
+    //valida que exista un cliente para poder agregar una cita
+    public boolean ValidarFK(Cita cita) {
+
+        try {
+            this.datos = this.sentencias.executeQuery("select * from clientes where placa=" + cita.getVehiculo().getPlaca());
+
+            if (datos.next()) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Error al validarFK");
+
+        }
+
+        return false;
+
+    }
+
+    /**
+     * utiliza la fecha del parametro cita y la compara con la fecha actual
+     *
+     * @param cita
+     * @return verdadero si la fecha es menor
+     */
+    private boolean CambiarEstadoCita(Cita cita) {
+        Date fechaActual = new Date();
+
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        //se utiliza para que el compareto funcione correctamente
+        try {
+            fechaActual = f.parse(f.format(fechaActual));
+        } catch (ParseException ex) {
+
+        }
+
+        System.out.println("fecha actual :" + fechaActual + "--fecha de la cita:" + cita.getFecha());
+        if (cita.getFecha().compareTo(fechaActual) < 0) {
+            cita.setStatus("desactivado");
+            System.out.println("La Fecha es menor :" + cita.getFecha().compareTo(fechaActual));
+            return true;
+
+        } else {
+
+            if (cita.getFecha().compareTo(fechaActual) > 0) {
+                System.out.println("La Fecha es mayor :" + cita.getFecha().compareTo(fechaActual));
+                return false;
+
+            } else {
+
+                System.out.println("La Fecha es Igual :" + cita.getFecha().compareTo(fechaActual));
+                return false;
+
+            }
+
+        }
+
     }
 
 }

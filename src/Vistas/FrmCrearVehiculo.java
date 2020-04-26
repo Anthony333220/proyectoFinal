@@ -152,10 +152,7 @@ public class FrmCrearVehiculo extends javax.swing.JInternalFrame {
                  cita=new Cita();
                  cita.setFecha(this.txtDate.getDate());
                
-                 if(ctlc.crearCita(cita)){
-                     
-                     JOptionPane.showMessageDialog(null,"SE AGREGO UN CITA");
-                 }
+               
                  
                 
             }

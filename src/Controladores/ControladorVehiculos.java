@@ -5,10 +5,12 @@
  */
 package Controladores;
 
+import Archivo.Configuracion;
 import Archivo.PruebaConexion;
 import Clases.Usuario;
 import Clases.Vehiculo;
-import Vistas.FrmPrincipal;
+import Vistas.FrmMenuPrincipal;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,7 +30,7 @@ public class ControladorVehiculos {
     private Vehiculo vehiculo;
 
     public ControladorVehiculos() {
-        conn = FrmPrincipal.getConexion();
+        conn = FrmMenuPrincipal.getConexion();
         this.sentencias = conn.getSentencias();
         this.datos = conn.getDatos();
     }
