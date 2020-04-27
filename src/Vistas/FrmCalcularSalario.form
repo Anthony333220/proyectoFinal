@@ -26,57 +26,38 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel7" min="-2" pref="190" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="270" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btnCalcular" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cajaSalarioNeto" min="-2" pref="169" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel5" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cajaRenta" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <Component id="cajaAse" min="-2" pref="145" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="cajaSalarioNeto" max="32767" attributes="0"/>
+                                  <Component id="cajaSalarioPrimario" pref="143" max="32767" attributes="0"/>
+                                  <Component id="cajaCedula" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel4" min="-2" pref="117" max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" pref="117" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" pref="117" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel1" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="comboxTipo" min="-2" pref="145" max="-2" attributes="0"/>
-                          <Component id="cajaAporte" min="-2" pref="145" max="-2" attributes="0"/>
-                          <Component id="comboxTipo1" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                          <Component id="cajaSalarioPrimario" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jLabel8" min="-2" pref="290" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="78" max="32767" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="btnCalcular" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -85,44 +66,31 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel8" min="-2" pref="38" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cajaSalarioPrimario" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="3" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="comboxTipo1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="comboxTipo" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" pref="27" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel4" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="cajaAporte" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="cajaAse" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cajaCedula" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cajaSalarioPrimario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel7" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="cajaSalarioNeto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnCalcular" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jScrollPane1" min="-2" pref="218" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cajaRenta" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-              <Component id="btnCalcular" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel7" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="cajaSalarioNeto" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -130,85 +98,30 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Salario"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Motivo de Incapacidad"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Tipo de Incapacidad"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Aporte a la CCSS"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Aporte ASE"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Renta"/>
+        <Property name="text" type="java.lang.String" value="Salario:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Salario aplicadas las Deducciones es "/>
+        <Property name="text" type="java.lang.String" value="Salario Neto:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cajaSalarioNeto">
-    </Component>
-    <Component class="javax.swing.JComboBox" name="comboxTipo">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="Ivalidez"/>
-            <StringItem index="1" value="Muerte"/>
-          </StringArray>
-        </Property>
+        <Property name="editable" type="boolean" value="false"/>
       </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="comboxTipo1">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Efermedad"/>
-            <StringItem index="1" value="Maternidad"/>
-            <StringItem index="2" value=" "/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JTextField" name="cajaAporte">
-    </Component>
-    <Component class="javax.swing.JTextField" name="cajaAse">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cajaAseActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="cajaRenta">
     </Component>
     <Component class="javax.swing.JTextField" name="cajaSalarioPrimario">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Calculo de Salario"/>
+        <Property name="text" type="java.lang.String" value="Salario neto"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnCalcular">
@@ -218,6 +131,35 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCalcularActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Se le aplicar&#xe1;n las siguientes deducciones:"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="-Enfermedad y maternidad 5.5%. &#xa;-Invalidez y Muerte 3.84%. &#xa;-Aporte del trabajador 1%. &#xa;-Aporte a la asociaci&#xf3;n solidarista 3.3%. &#xa;&#xa;-Impuesto sobre la renta: &#xa;1. Exento hasta &#xa2;817,000.&#xa;&#xa;2.De &#xa2;817,001 a &#xa2;1,226,000 10% de retenci&#xf3;n &#xa;sobre el monto que supere los &#xa2;817,001.&#xa; &#xa;3. De &#xa2;1,226,001 en adelante 15% de retenci&#xf3;n &#xa;sobre lo que supere a &#xa2;1,226,001. "/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cedula:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cajaCedula">
     </Component>
   </SubComponents>
 </Form>

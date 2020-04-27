@@ -111,7 +111,7 @@ public class FrmEliminarTecnico extends javax.swing.JInternalFrame {
 
             try {
                 tecnicos.setCedula(Integer.parseInt(this.cajaCedula.getText()));
-                if(ctt.deleteTecnico(tecnicos)){
+                if(ctt.eliminarTecnico(tecnicos)){
                     
                     
                     JOptionPane.showMessageDialog(this, "Tecnico eliminado");

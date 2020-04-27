@@ -137,7 +137,7 @@ public class ControladorRevision {
     
     public void exportarXML(String Placa){
         ArrayList<String> revisiones = listarRevisiones(Placa);
-        Archivo archivoXML = new Archivo("");
+        Archivo archivoXML = new Archivo("Revisiones de " + Placa);
         archivoXML.limpiar();
         archivoXML.escribir("<xml>");
         archivoXML.escribir(revisiones.toString());

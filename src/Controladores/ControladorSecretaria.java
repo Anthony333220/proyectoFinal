@@ -3,7 +3,6 @@ package Controladores;
 import Archivo.PruebaConexion;
 import Clases.Secretaria;
 import Vistas.FrmMenuPrincipal;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -29,7 +28,6 @@ public class ControladorSecretaria {
     }
 
     public ControladorSecretaria() {
-
         conn = FrmMenuPrincipal.getConexion();
 
         this.sentencias = conn.getSentencias();
@@ -71,13 +69,11 @@ public class ControladorSecretaria {
 
                 return cliente2;
             }
-
         } catch (SQLException ex) {
 
             System.out.println("No se logro hayar Secretaria");
         }
         return null;
-
     }
 
     public boolean deleteSecretaria(Secretaria secretaria) {
@@ -87,8 +83,7 @@ public class ControladorSecretaria {
 
             System.out.println("si se logro eliminar");
             
-            
-            JOptionPane.showMessageDialog(null, "si se borro");
+            JOptionPane.showMessageDialog(null, "Se logro borrar el registro");
             return true;
 
         } catch (SQLException ex) {
@@ -98,43 +93,32 @@ public class ControladorSecretaria {
         return false;
     }
     public boolean actualizarSecretaria(Secretaria secretaria) {
-
         try {
-            SimpleDateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");
-            
+            SimpleDateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");            
             
             this.sentencias.executeUpdate("UPDATE secretaria SET nombre='" + secretaria.getNombre() 
-             + "',fechaNacimiento='" + fecha.format(secretaria.getFechaNacimiento()) + "',telefono='" + secretaria.getTelefono() + "',correoElectronico='" + secretaria.getCorreoElectrónico()
-             + "'  WHERE cedula ='" +secretaria.getCedula() + "';");
+             + "',fechaNacimiento='" + fecha.format(secretaria.getFechaNacimiento()) + "',telefono='" + secretaria.getTelefono() 
+             + "',correoElectronico='" + secretaria.getCorreoElectrónico() + "'  WHERE cedula ='" +secretaria.getCedula() + "';");
             return true;
-
-        } catch (SQLException ex) {
-            
-            
+        } catch (SQLException ex) {       
             System.out.println("No se lofro actualizar la secretaria");
         }
         return false;
     }
 
     public ArrayList<Secretaria> listaSecretarias() {
-
         ArrayList<Secretaria> listadoSecretarias = new ArrayList();
         try {
             this.datos = this.sentencias.executeQuery("select * from clientes");
 
             while (datos.next()) {
-
                 listadoSecretarias.add(new Secretaria(datos.getInt(2), datos.getString(3), datos.getDate(4), datos.getInt(5), datos.getString(6)));
-
             }
             return listadoSecretarias;
 
         } catch (SQLException ex) {
-
             System.out.println("no se agrego secretaria");
         }
-
         return null;
     }
-
 }
