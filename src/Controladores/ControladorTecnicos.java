@@ -116,13 +116,11 @@ public class ControladorTecnicos {
 
                 return tecnicoSiguiente;//retornanmos eñl siguiente tecnico
             }
-
         } catch (SQLException ex) {
 
             System.out.println("No se escuentra el tecnico");
         }
         return null;
-
     }
 
     public boolean actualizarTecnicos(Tecnico tecnico) {
@@ -134,12 +132,10 @@ public class ControladorTecnicos {
             JOptionPane.showMessageDialog(null, "iNformacion actualizada de tecnico");
 
             return true;
-
         } catch (SQLException ex) {
 
             System.out.println("No se logro actualizar tecnicos");
         }
-
         return false;
     }
 
@@ -153,14 +149,11 @@ public class ControladorTecnicos {
             this.datos = this.sentencias.executeQuery("select * from tecni_cos");
 
             while (datos.next()) {
-
                 tecnicosListado.add(new Tecnico(datos.getInt(2), datos.getString(3), datos.getDate(4), datos.getInt(5), datos.getString(6), datos.getDouble(7)));
-
             }
             JOptionPane.showMessageDialog(null, "Lista se dio con exito");
 
             return tecnicosListado;
-
         } catch (SQLException ex) {
             System.out.println("LISTA DE TERCNICOS NO FUNCIONO");
         }
@@ -168,8 +161,6 @@ public class ControladorTecnicos {
     }
 
     public Tecnico buscarId(Tecnico tecnico) {
-        Tecnico tbp = null;
-
         try {
 
             this.datos = this.sentencias.executeQuery("select * from tecni_cos where cedula=" + tecnico.getCedula());
@@ -177,15 +168,13 @@ public class ControladorTecnicos {
                 tecnico.getNombre();
                 tecnico.getTelefono();
                 tecnico.getCorreoElectrónico();
-                tecnico.getSalario();
-                
+                tecnico.getSalario();                
             }            
         } catch (Exception e) {
             System.out.println("error no se pudo");
-
         }
 
-        return tbp;
+        return tecnico;
     }
 
 }

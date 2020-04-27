@@ -9,8 +9,7 @@ import java.util.Date;
 public class Secretaria {
     
     private int cedula;
-    private String nombre;
-   
+    private String nombre;   
     private Date fechaNacimiento;
     private int telefono;
     private String correoElectrónico;
@@ -28,9 +27,7 @@ public class Secretaria {
         this.correoElectrónico=null;
         this.fechaNacimiento=null;
         this.nombre=null;
-        this.telefono=0;
-        
-        
+        this.telefono=0;   
     }
 
     public int getCedula() {
@@ -71,7 +68,5 @@ public class Secretaria {
 
     public void setCorreoElectrónico(String correoElectrónico) {
         this.correoElectrónico = correoElectrónico;
-    }
-    
-   
+    } 
 }

@@ -10,7 +10,6 @@ public class Tecnico {
 
     private int cedula;
     private String nombre;
-
     private Date fechaNacimiento;
     private int telefono;
     private String correoElectronico;
@@ -85,5 +84,33 @@ public class Tecnico {
     public void setSalario(double salario) {
         this.salario = salario;
     }
+    
+    public double calcularDeducciones(double salario){
+        return (double) ((salario * 0.055) + (salario * 0.0384) + (salario * 0.01) + (salario * 0.033));
+    }
+    
+    public double calcularRenta(double salario){
+        double renta;
+        if (salario > 817000 && salario <= 1226000) {
+            renta = (salario - 817001) * 0.10;
+            return (double)(renta + calcularDeducciones(salario));
+        } else if (salario > 1226000) {
+            renta = (salario - 1226001) * 0.15 + 40899.9;
+            return (double) (renta + calcularDeducciones(salario));
+        } else {
+            return (double) (calcularDeducciones(salario));
+        }
+    }
+    
+    public double calcularSalario(){
+        double neto = this.calcularRenta(salario);
+        return (double) (salario - neto) ;
+    }
 
+    @Override
+    public String toString() {
+        return "<Tecnico>" + "<Cedula>" + cedula + "</Cedula>" + "<Nombre>" + nombre + "</Nombre>" + "</Tecnico>";
+    }
+    
+    
 }

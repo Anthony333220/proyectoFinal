@@ -17,7 +17,7 @@ public class Usuario {
     private String tipoUsuario;
     private int cedula;
 
-    public Usuario(int cedula, String nombre, Date fechaNacimiento, int telefono, String correo, String sobrenombre,String contraseña, String tipo) {
+    public Usuario(int cedula, String nombre, Date fechaNacimiento, int telefono, String correo, String sobrenombre, String contraseña, String tipo) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
@@ -27,7 +27,6 @@ public class Usuario {
         this.contrasena = contraseña;
         this.tipoUsuario = tipo;
     }
-    
 
     public Usuario() {
         this.cedula = 0;
@@ -40,14 +39,14 @@ public class Usuario {
         this.nombreUsuario = null;
 
     }
-        
+
     public boolean comprobar() {
-        
-        return  this.telefono >0 && this.tipoUsuario!=null &&
-                this.cedula >0 && this.nombre!=null && 
-                this.contrasena!=null && this.correoElectronico!=null && 
-                this.fechaNacimiento!=null && this.nombreUsuario!=null ;
-        
+
+        return this.telefono > 0 && this.tipoUsuario != null
+                && this.cedula > 0 && this.nombre != null
+                && this.contrasena != null && this.correoElectronico != null
+                && this.fechaNacimiento != null && this.nombreUsuario != null;
+
     }
 
     public String getNombre() {

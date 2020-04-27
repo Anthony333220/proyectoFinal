@@ -35,7 +35,7 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
         vehiculo = null;
 
         initComponents();
-       // cajaId.setVisible(false);
+        // cajaId.setVisible(false);
     }
 
     /**
@@ -241,52 +241,51 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
 
     private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
 
-        cita= new Cita();
+        cita = new Cita();
 
         cita.setFecha(this.jDateChooser1.getDate());
 
-        if(this.JComboBoxHora.getSelectedIndex()>0 && this.JCombreBoxMinutos.getSelectedIndex()>0 && this.JComboBoxSegundos.getSelectedIndex()>0 )
-        {
+        if (this.JComboBoxHora.getSelectedIndex() > 0 && this.JCombreBoxMinutos.getSelectedIndex() > 0 && this.JComboBoxSegundos.getSelectedIndex() > 0) {
 
             hora = String.valueOf(this.JComboBoxHora.getSelectedItem());
             minutos = String.valueOf(this.JCombreBoxMinutos.getSelectedItem());
             segundos = String.valueOf(this.JComboBoxSegundos.getSelectedItem());
-            cita.setHora( concatenarhora() );
+            cita.setHora(concatenarhora());
             cita.setStatus("activado");
 
-            if(vehiculo!=null){
-
+            if (vehiculo != null) {
                 cita.setVehiculo(vehiculo);
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe agregar un vehiculo");
+            }
 
-            }else{JOptionPane.showMessageDialog(this, "Debe agregar un vehiculo");}
-
-            if(cita.comprobar())
-            {
-
-                if(ctlc.ValidarFK(cita))
-                {
-                    if(ctlc.ValidarCantCitas(cita))
-                    {
-
-                        if(ctlc.validarPK(cita)){
-
-                            if( ctlc.añadir(cita))
-                            {
+            if (cita.comprobar()) {
+                if (ctlc.validarFK(cita)) {
+                    if (ctlc.validarCantCitas(cita)) {
+                        if (ctlc.validarPK(cita)) {
+                            if (ctlc.crearCita(cita)) {
                                 JOptionPane.showMessageDialog(this, "Cita agregada");
-                                cita=null;
-                                vehiculo=null;
+                                cita = null;
+                                vehiculo = null;
                                 Limpiar();
-                            }else{JOptionPane.showMessageDialog(this, "surgio un problema al añadir");}
-
-                        }else{JOptionPane.showMessageDialog(this, "no puede tener 2 citas activas");}
-
-                    }else{JOptionPane.showMessageDialog(this, "Ya no hay mas citas disponibles para hoy");}
-
-                }else{JOptionPane.showMessageDialog(this, "No se encuentra ese cliente");}
-
-            }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos"); }
-
-        }else{JOptionPane.showMessageDialog(this, "Debe selecionar una hora, minuto y segundo");}
+                            } else {
+                                JOptionPane.showMessageDialog(this, "surgio un problema al añadir");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(this, "no puede tener 2 citas activas");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Ya no hay mas citas disponibles para hoy");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se encuentra ese cliente");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe selecionar una hora, minuto y segundo");
+        }
 
     }//GEN-LAST:event_BtnAgregarActionPerformed
 
@@ -296,49 +295,40 @@ public class FrmCrearCitas extends javax.swing.JInternalFrame {
 
     private void BtnSeleccionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeleccionarClienteActionPerformed
 
-        FrmMostrarCitas jdiagbuscarclientes = new FrmMostrarCitas(null,true);
+        FrmMostrarCitas jdiagbuscarclientes = new FrmMostrarCitas(null, true);
         jdiagbuscarclientes.setVisible(true);
 
-        if( jdiagbuscarclientes.getCita()!=null )
-        {
+        if (jdiagbuscarclientes.getCita() != null) {
 
-          //  vehiculo = jdiagbuscarclientes
+            //  vehiculo = jdiagbuscarclientes
             this.TxtCedula.setEditable(true);
             this.TxtNombre.setEditable(true);
-            this.TxtCedula.setText(String.valueOf( vehiculo.getCedula()));
+            this.TxtCedula.setText(String.valueOf(vehiculo.getCedula()));
             this.TxtNombre.setText(String.valueOf(vehiculo.getMarca()));
             this.TxtCedula.setEditable(false);
             this.TxtNombre.setEditable(false);
-        }else
-        {
+        } else {
             System.out.println("no selecciono un cliente");
         }
     }//GEN-LAST:event_BtnSeleccionarClienteActionPerformed
 
-
-    
-    
-    
-      public String concatenarhora() {
+    public String concatenarhora() {
         //una sola hora y eliminamos espacios
-        return (this.hora+":"+this.minutos+":"+this.segundos+"").replaceAll("\\s",""); 
-        
+        return (this.hora + ":" + this.minutos + ":" + this.segundos + "").replaceAll("\\s", "");
     }
-    
-    
+
     public void Limpiar() {
-   
+
         this.jDateChooser1.setCalendar(null);
         this.TxtCedula.setText("");
         this.TxtNombre.setText("");
         this.JComboBoxHora.setSelectedIndex(0);
         this.JCombreBoxMinutos.setSelectedIndex(0);
         this.JComboBoxSegundos.setSelectedIndex(0);
-        
-        
+
     }
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregar;
     private javax.swing.JButton BtnSeleccionarCliente;

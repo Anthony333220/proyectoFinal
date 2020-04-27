@@ -1,6 +1,5 @@
 package Controladores;
 
-
 import Archivo.PruebaConexion;
 import Clases.Usuario;
 
@@ -17,15 +16,11 @@ public class ControladorUsuarios {
     private PruebaConexion conn;
     private Statement sentencias;
     private ResultSet datos;
-     private Usuario usuario;
-   
-   
-   
-   
-   
+    private Usuario usuario;
+
     public ControladorUsuarios() {
-       conn  = FrmMenuPrincipal.getConexion();
-        
+        conn = FrmMenuPrincipal.getConexion();
+
         this.sentencias = conn.getSentencias();
         this.datos = conn.getDatos();
 
@@ -38,16 +33,12 @@ public class ControladorUsuarios {
         this.datos = conn.getDatos();
 
     }
-  
-    
-    
-    
 
     public boolean agregarUsuario(Usuario usuario) {
         try {
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
             //System.out.println("si entra a ejecuchacion");
-            this.sentencias.execute("insert into usuarios values(null,'"+usuario.getCedula()+"','"+usuario.getNombre()+"','" +usuario.getTelefono()+ "','"+usuario.getCorreoElectronico()+"','"+f.format(usuario.getFechaNacimiento())+"','"+usuario.getNombreUsuario()+"','"+usuario.getContrasena()+"','"+usuario.getTipoUsuario()+"')");
+            this.sentencias.execute("insert into usuarios values(null,'" + usuario.getCedula() + "','" + usuario.getNombre() + "','" + usuario.getTelefono() + "','" + usuario.getCorreoElectronico() + "','" + f.format(usuario.getFechaNacimiento()) + "','" + usuario.getNombreUsuario() + "','" + usuario.getContrasena() + "','" + usuario.getTipoUsuario() + "')");
             System.out.println("metodo si agrega  en ctl");
             return true;
         } catch (SQLException ex) {
@@ -59,7 +50,7 @@ public class ControladorUsuarios {
     public Usuario buscarUsuario(Usuario usuario) {
         try {
 
-            this.datos = this.sentencias.executeQuery("select * from usuarios where cedula=" +usuario.getCedula());
+            this.datos = this.sentencias.executeQuery("select * from usuarios where cedula=" + usuario.getCedula());
 
             if (datos.next()) {
 
@@ -83,7 +74,7 @@ public class ControladorUsuarios {
 
     }
 
-    public boolean eliminar(Usuario usuario) {
+    public boolean eliminarUsuario(Usuario usuario) {
         try {
 
             this.sentencias.executeUpdate("delete from usuarios where cedula=" + usuario.getCedula());
@@ -97,11 +88,24 @@ public class ControladorUsuarios {
         return false;
     }
 
-    public boolean actualizar(Usuario usuario) {
+    public boolean actualizarUsuario(Usuario usuario) {
 
         try {
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
             this.sentencias.executeUpdate("UPDATE usuarios SET nombre='" + usuario.getNombre() + "',fechaNacimiento='" + f.format(usuario.getFechaNacimiento()) + "', telefono='" + usuario.getTelefono() + "', correoElectronico='" + usuario.getCorreoElectronico() + "', NombreUsuario='" + usuario.getNombreUsuario() + "', Contraseña='" + usuario.getContrasena() + "',tipoUsuario='" + usuario.getTipoUsuario() + "' WHERE cedula ='" + usuario.getCedula() + "';");
+            return true;
+
+        } catch (SQLException ex) {
+            System.out.println("Error al actualizar");
+            System.out.println(ex);
+        }
+        return false;
+    }
+    
+    public boolean actualizarContrasena(Usuario usuario) {
+
+        try {
+            this.sentencias.executeUpdate("UPDATE usuarios SET contrasena='" + usuario.getContrasena() + "' WHERE NombreUsuario='" + usuario.getNombreUsuario() + "';");
             return true;
 
         } catch (SQLException ex) {

@@ -20,13 +20,9 @@ public class FrmEliminarCita extends javax.swing.JInternalFrame {
 
     public FrmEliminarCita() {
         initComponents();
-        
-        
-        ctu=new ControladorUsuarios();
-        
-        
-        
-        
+
+        ctu = new ControladorUsuarios();
+
     }
 
     public void limpiarCajas() {
@@ -100,26 +96,19 @@ public class FrmEliminarCita extends javax.swing.JInternalFrame {
 
         if (cajaCedula.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese el numero de cedula");
-
         } else {
-            
-            usuario=new Usuario();
-
+            usuario = new Usuario();
             try {
                 usuario.setCedula(Integer.parseInt(this.cajaCedula.getText()));
-                if(ctu.eliminar(usuario)){
-                    
-                    
+                if (ctu.eliminarUsuario(usuario)) {
+
                     JOptionPane.showMessageDialog(this, "Usuario eliminado");
-                }else{
-                      
+                } else {
+
                     JOptionPane.showMessageDialog(this, "Usuario NO eliminado");
                 }
-
             } catch (Exception e) {
-                  
-                    JOptionPane.showMessageDialog(this, "ERROR AL ELIMINAR USUARIO DEVIDO A "+e.getMessage());
-
+                JOptionPane.showMessageDialog(this, "ERROR AL ELIMINAR USUARIO DEVIDO A " + e.getMessage());
             }
         }
 //                
@@ -156,7 +145,7 @@ public class FrmEliminarCita extends javax.swing.JInternalFrame {
 //            }
 //            
 //        }
-        
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -99,5 +99,12 @@ public class Vehiculo {
         this.nombrePropietario = nombrePropietario;
     }
 
+    @Override
+    public String toString() {
+        return "<Vehiculo>" + "<Placa>" + placa + "</Placa>" + "<Marca>" + marca + "</Marca>" + "<Modelo>" + modelo + "</Modelo>" + "<Año>" + anio + "</Año>" +
+                "<FechaDeInscripcion>" + fechaInscripcion + "</FechaDeInscripcion>" + "<CedulaPropietario>" + cedula + "</CedulaPropietario>" + 
+                "<NombrePropietario>" + nombrePropietario + "<NombrePropietario>" + "</Vehiculo>";
+    }
+
     
 }

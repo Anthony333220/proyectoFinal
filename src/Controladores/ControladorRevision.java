@@ -4,11 +4,9 @@ import Archivo.Configuracion;
 import Archivo.PruebaConexion;
 import Clases.Cita;
 import Clases.Revision;
-import Clases.Secretaria;
 import Clases.Tecnico;
 import Clases.Vehiculo;
 import Vistas.FrmMenuPrincipal;
-
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,20 +19,17 @@ import java.text.SimpleDateFormat;
  */
 public class ControladorRevision {
 
-    private Statement sentencias;
     private ResultSet datos;
     private Revision revision;
     private Vehiculo vehiculo;
     private ControladorVehiculos ctrVehiculo;
-    private Statement sentencias2;
-
+    private Statement sentencias;
     private PruebaConexion conn;
 
-    public ControladorRevision(Statement sentencias, ResultSet datos, Revision revision, Statement sentencias2, PruebaConexion conn) {
-        this.sentencias = sentencias;
+    public ControladorRevision(ResultSet datos, Revision revision, Statement sentencias, PruebaConexion conn) {
         this.datos = datos;
         this.revision = revision;
-        this.sentencias2 = sentencias2;
+        this.sentencias = sentencias;
         this.conn = conn;
     }
 
@@ -46,29 +41,24 @@ public class ControladorRevision {
     }
 
     public ControladorRevision() {
-
         conn = FrmMenuPrincipal.getConexion();  //probar com conexion o conectar
         try {
-            this.sentencias2 = FrmMenuPrincipal.getConexion().getConexion().createStatement();
+            this.sentencias = FrmMenuPrincipal.getConexion().getConexion().createStatement();
         } catch (SQLException ex) {
 
-            System.out.println("No se lo gro conectar sentencia  con la conexion");
+            System.out.println("No se logro conectar sentencia con la conexion");        
         }
-
         this.sentencias = conn.getSentencias();
         this.datos = conn.getDatos();
     }
 
     public boolean crearRevision(Revision revision, Vehiculo vehiculo,Tecnico tecnico) {
-
-        System.out.println("antes de crear la cita el try");
-        try {
+        try {     
             
             this.vehiculo = ctrVehiculo.buscarVehiculo(vehiculo);
             
             if (!this.vehiculo.equals(null)) {
                 SimpleDateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");
-
                 sentencias.execute("insert into revision values(null,'" + revision.getVehiculo().getPlaca() + "','" + 
                         fecha.format(revision.getFecha()) + "','" + revision.getHora() + "','" + revision.getVehiculo().getCedula() + "','"
                         + revision.getTipoRevision() + "','" + revision.getObservacione() + "','" + revision.isEstado() + "')");
@@ -76,7 +66,6 @@ public class ControladorRevision {
             }          
             return true;
         } catch (SQLException ex) {
-
             System.out.println("No se logro crear cita devido a" + ex.getMessage());
             System.out.println(ex);
         }

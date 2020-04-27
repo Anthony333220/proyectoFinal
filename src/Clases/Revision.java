@@ -98,6 +98,7 @@ public class Revision{
 
     @Override
     public String toString() {
-        return "Revision{" + "vehiculo=" + vehiculo + ", fecha=" + fecha + ", hora=" + hora + ", tecnico=" + tecnico + ", tipoRevision=" + tipoRevision + ", observacione=" + observacione + ", estado=" + estado + '}';
+        return "<Revision>" + "<Fecha>" + fecha + "</Fecha>" + "<Hora>" + hora + "</Hora>" + "<TipoDeRevision>" + tipoRevision + "</TipoDeRevision>" + 
+                "<Observacione>" + observacione + "</Observacione>" + "<Estado>" + estado + "</Estado>" + "</Revision>";
     }    
 }

@@ -1,5 +1,3 @@
-
-
 package Vistas;
 
 import Archivo.Configuracion;
@@ -17,15 +15,12 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
     private Usuario usuario;
     private ControladorUsuarios cu;
 
-  //private static Configuraciones conexion=new Configuraciones();
-  
-  
+    //private static Configuraciones conexion=new Configuraciones();
     public FrmCrearUsuarios() {
         cu = new ControladorUsuarios();
         initComponents();
 
     }
-       
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,18 +58,6 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Agregar usuarios o modificar");
 
-        cajaCedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cajaCedulaActionPerformed(evt);
-            }
-        });
-
-        cajaTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cajaTelefonoActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Cedula");
 
         jLabel4.setText("Nombre Completo");
@@ -94,19 +77,7 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        cajaUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cajaUsuarioActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Nombre usuario");
-
-        cajaContra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cajaContraActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("Contraseña");
 
@@ -205,7 +176,7 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -237,21 +208,15 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cajaTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cajaTelefonoActionPerformed
-
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         usuario = new Usuario();
-        try{
-        usuario.setCedula(Integer.parseInt(this.cajaCedula.getText()));
-        usuario.setTelefono(Integer.parseInt(this.cajaTelefono.getText()));
-        System.out.println("si lee el try");
-        } catch(NumberFormatException e){
-            System.out.println("error"+e.getMessage());
-            
-            
+        try {
+            usuario.setCedula(Integer.parseInt(this.cajaCedula.getText()));
+            usuario.setTelefono(Integer.parseInt(this.cajaTelefono.getText()));
+            System.out.println("si lee el try");
+        } catch (NumberFormatException e) {
+            System.out.println("error" + e.getMessage());
         }
 
         usuario.setNombre(this.cajaNombre.getText());
@@ -265,39 +230,22 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
         if (cu.agregarUsuario(usuario)) {
 
             JOptionPane.showMessageDialog(this, "Usuario agregado");
-            usuario=null;
+            usuario = null;
         }
-
-
     }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void cajaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaUsuarioActionPerformed
-
-    }//GEN-LAST:event_cajaUsuarioActionPerformed
-
-    private void cajaCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaCedulaActionPerformed
-
-
-    }//GEN-LAST:event_cajaCedulaActionPerformed
-
-    private void cajaContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaContraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cajaContraActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         Limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-         usuario = new Usuario();
-        try{
-        usuario.setCedula(Integer.parseInt(this.cajaCedula.getText()));
-        usuario.setTelefono(Integer.parseInt(this.cajaTelefono.getText()));
-        System.out.println("si lee el try");
-        } catch(NumberFormatException e){
-            System.out.println("error"+e.getMessage());
-            
-            
+        usuario = new Usuario();
+        try {
+            usuario.setCedula(Integer.parseInt(this.cajaCedula.getText()));
+            usuario.setTelefono(Integer.parseInt(this.cajaTelefono.getText()));
+            System.out.println("si lee el try");
+        } catch (NumberFormatException e) {
+            System.out.println("error" + e.getMessage());
         }
 
         usuario.setNombre(this.cajaNombre.getText());
@@ -308,17 +256,11 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
         usuario.setFechaNacimiento(this.txtDate.getDate());
 
         System.out.println("antes de añadir");
-        if (cu.actualizar(usuario)) {
+        if (cu.actualizarUsuario(usuario)) {
 
             JOptionPane.showMessageDialog(this, "Usuario Modificado");
-            usuario=null;
+            usuario = null;
         }
-
-        
-        
-        
-        
-        
     }//GEN-LAST:event_btnModificarActionPerformed
 
     public String concatenar(char pass[]) {
@@ -327,10 +269,8 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
         if (pass.length > 0) {
             for (int i = 0; i <= pass.length - 1; i++) {
                 pass2 += pass[i];
-
             }
             return pass2;
-
         } else {
             return pass2;
         }
@@ -345,10 +285,7 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
         this.cajaUsuario.setText("");
         this.combox.setSelectedIndex(0);
         this.txtDate.setCalendar(null);
-
     }
-
-  
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
