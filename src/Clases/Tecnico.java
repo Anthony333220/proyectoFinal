@@ -24,6 +24,11 @@ public class Tecnico {
         this.salario = salario;
     }
     
+    public Tecnico(int cedula, String nombre) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+    }
+    
     public Tecnico(int cedula) {
         this.cedula = cedula;
     }

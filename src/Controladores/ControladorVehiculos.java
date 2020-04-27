@@ -59,13 +59,11 @@ public class ControladorVehiculos {
 
     public Vehiculo buscarVehiculo(Vehiculo vehiculo) {
         try {
-
             this.datos = this.sentencias.executeQuery("select * from vehiculos where placa=" + vehiculo.getPlaca());
 
             if (datos.next()) {
 
                 Vehiculo automovil = new Vehiculo(vehiculo.getPlaca());
-                
                 
                 automovil.setPlaca(datos.getInt(1));
                 automovil.setMarca(datos.getString(2));                
@@ -77,12 +75,10 @@ public class ControladorVehiculos {
 
                 return automovil;
             }
-
         } catch (SQLException ex) {
             System.out.println("no se pudo hayar  un usuario" + ex);
         }
         return null;
-
     }
 
     public boolean eliminar(Vehiculo vehiculo) {

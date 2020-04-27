@@ -94,30 +94,22 @@ public class ControladorTecnicos {
     public Tecnico buscarTecnico(Tecnico tecnico) {
         try {
 
-            this.datos = this.sentencias.executeQuery("select * from tecni_cos where cedula=" + tecnico.getCedula());
+            this.datos = this.sentencias.executeQuery("select * from tecnicos where cedula=" + tecnico.getCedula());
 
             if (datos.next()) {
 
                 Tecnico tecnicoSiguiente = new Tecnico();
 
                 tecnicoSiguiente.setCedula(datos.getInt(2));
-
                 tecnicoSiguiente.setNombre(datos.getString(3));
-
                 tecnicoSiguiente.setFechaNacimiento(datos.getDate(4));
-
                 tecnicoSiguiente.setTelefono(datos.getInt(5));
-
                 tecnicoSiguiente.setCorreoElectrónico(datos.getString(6));
-
                 tecnicoSiguiente.setSalario(datos.getDouble(7));
-
-                System.out.println(" si se encontro tecnico");
 
                 return tecnicoSiguiente;//retornanmos eñl siguiente tecnico
             }
         } catch (SQLException ex) {
-
             System.out.println("No se escuentra el tecnico");
         }
         return null;

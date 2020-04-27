@@ -27,10 +27,6 @@ public class Revision{
         this.estado = estado;
     }
     
-    public Revision(Date fecha) {
-        this.fecha = fecha;
-    }
-    
     public Revision(Vehiculo vehiculo, Date fecha, Time hora, Tecnico tecnico, String observacione,String estado) {
         this.vehiculo = vehiculo;
         this.fecha = fecha;
@@ -38,6 +34,17 @@ public class Revision{
         this.tecnico = tecnico;
         this.observacione = observacione;
         this.estado = estado;
+    }
+    
+    public Revision(Date fecha, Time hora, String observacione,String estado) {
+        this.fecha = fecha;
+        this.hora = hora;
+        this.observacione = observacione;
+        this.estado = estado;
+    }
+    
+    public Revision(Date fecha) {
+        this.fecha = fecha;
     }
 
     public Vehiculo getVehiculo() {

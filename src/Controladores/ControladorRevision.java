@@ -1,5 +1,6 @@
 package Controladores;
 
+import Archivo.Archivo;
 import Archivo.Configuracion;
 import Archivo.PruebaConexion;
 import Clases.Cita;
@@ -12,6 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,9 +26,12 @@ public class ControladorRevision {
     private ResultSet datos;
     private Revision revision;
     private Vehiculo vehiculo;
+    private Tecnico tecnico;
     private ControladorVehiculos ctrVehiculo;
+    private ControladorTecnicos ctrTecnico;
     private Statement sentencias;
     private PruebaConexion conn;
+    private int contador = 0;
 
     public ControladorRevision(ResultSet datos, Revision revision, Statement sentencias, PruebaConexion conn) {
         this.datos = datos;
@@ -52,7 +59,7 @@ public class ControladorRevision {
         this.datos = conn.getDatos();
     }
 
-    public boolean crearRevision(Revision revision, Vehiculo vehiculo,Tecnico tecnico) {
+    public boolean crearRevision(Revision revision, Vehiculo vehiculo, Tecnico tecnico) {
         try {     
             
             this.vehiculo = ctrVehiculo.buscarVehiculo(vehiculo);
@@ -98,6 +105,46 @@ public class ControladorRevision {
         return null;
     }
     
+    public ArrayList<String> listarRevisiones(String Placa){
+        ArrayList <String> revisiones = new ArrayList();
+        try {
+            this.datos = this.sentencias.executeQuery("select * from revision where placa=" + Placa);
+            
+            revision.setVehiculo(new Vehiculo(datos.getInt(1)));
+            vehiculo = ctrVehiculo.buscarVehiculo(revision.getVehiculo());            
+            revisiones.add(vehiculo.toString());
+            
+            while(this.datos.next()){
+                revision.setFecha(datos.getDate(2));                
+                revision.setHora(datos.getTime(3));
+                revision.setTecnico(new Tecnico(datos.getInt(4)));
+                revision.setTipoRevision(datos.getString(5));
+                revision.setObservacione(datos.getString(6));
+                
+                tecnico = ctrTecnico.buscarTecnico(revision.getTecnico());
+                
+                revisiones.add(revision.toString());
+                revisiones.add(tecnico.toString());
+                
+                contador++;
+            }            
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorRevision.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return revisiones;        
+    }
     
+    public void exportarXML(String Placa){
+        ArrayList<String> revisiones = listarRevisiones(Placa);
+        Archivo archivoXML = new Archivo("");
+        archivoXML.limpiar();
+        archivoXML.escribir("<xml>");
+        archivoXML.escribir(revisiones.toString());
+        archivoXML.escribir("</xml>");
+        archivoXML.guardar();
+        archivoXML.cerrar();
+        revisiones.clear();
+    }
 
 }
